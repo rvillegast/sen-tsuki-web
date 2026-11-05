@@ -1,700 +1,2190 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sen Tsuki · Medidor de quién golpea primero en karate</title>
-  <meta name="description" content="Sen Tsuki mide quién golpea primero en karate con sensores piezoeléctricos y comunicación por radio ESP-NOW. Proyecto del equipo Los Raules para el dojo KenDoKan.">
-  <meta property="og:title" content="Sen Tsuki · Medidor de quién golpea primero en karate">
-  <meta property="og:description" content="Dos almohadillas con sensor avisan por radio a un receptor que decide quién llegó primero. Proyecto del dojo KenDoKan.">
-  <meta property="og:type" content="website">
-  <meta name="theme-color" content="#ebaf00">
-  <link rel="icon" type="image/png" href="assets/img/favicon.png">
-  <link rel="preload" href="assets/fonts/oswald-latin.woff" as="font" type="font/woff" crossorigin>
-  <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sen Tsuki · Medidor de quién golpea primero en karate</title>
+    <meta
+      name="description"
+      content="Sen Tsuki mide quién golpea primero en karate con sensores piezoeléctricos y comunicación por radio ESP-NOW. Proyecto del equipo Los Raules para el dojo KenDoKan."
+    />
+    <meta
+      property="og:title"
+      content="Sen Tsuki · Medidor de quién golpea primero en karate"
+    />
+    <meta
+      property="og:description"
+      content="Dos almohadillas con sensor avisan por radio a un receptor que decide quién llegó primero. Proyecto del dojo KenDoKan."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#ebaf00" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+    <link
+      rel="preload"
+      href="assets/fonts/oswald-latin.woff"
+      as="font"
+      type="font/woff"
+      crossorigin
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <a class="saltar" href="#contenido">Saltar al contenido</a>
 
-  <header class="cabecera">
-    <div class="contenedor">
-      <a class="marca" href="#inicio">Sen <span>Tsuki</span></a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
-      <nav class="menu" id="menu" aria-label="Secciones del sitio">
-        <a href="#problema">Problema</a>
-        <a href="#solucion">Solución</a>
-        <a href="#como-funciona">Cómo funciona</a>
-        <a href="#impacto">Impacto</a>
-        <a href="#historia">Historia</a>
-        <a href="#resultados">Resultados</a>
-        <a href="#equipo">Equipo</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="contenido">
-
-    <!-- ===================== PORTADA ===================== -->
-    <section class="portada" id="inicio">
+    <header class="cabecera">
       <div class="contenedor">
-        <div>
-          <p class="sobretitulo">Jornadas de Innovación 2026 · Magíster en Ingeniería Informática · UNAB</p>
-          <h1>Sen Tsuki</h1>
-          <p class="bajada">¿Quién conecta primero? Medición con sensores para karate.</p>
-          <p class="texto">Dos almohadillas con sensor piezoeléctrico avisan por radio a un receptor, y el receptor decide, sin depender de la mirada de nadie, quién llegó primero: <strong>Aka</strong> (rojo) o <strong>Ao</strong> (azul). Un proyecto del equipo <strong>Los Raules</strong>, construido para el dojo <strong>KenDoKan</strong>.</p>
-          <div class="botones">
-            <a class="boton" href="#video">Ver la animación</a>
-            <a class="boton boton--claro" href="#resultados">Ver los resultados</a>
-          </div>
-        </div>
-        <div class="logo-wrap">
-          <img src="assets/img/logo-kendokan.png" width="260" height="260" alt="Logo del dojo KenDoKan Karate Do">
-        </div>
+        <a class="marca" href="#inicio">Sen <span>Tsuki</span></a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="menu"
+        >
+          Menú
+        </button>
+        <nav class="menu" id="menu" aria-label="Secciones del sitio">
+          <a href="#problema">Problema</a>
+          <a href="#solucion">Solución</a>
+          <a href="#como-funciona">Cómo funciona</a>
+          <a href="#impacto">Impacto</a>
+          <a href="#historia">Historia</a>
+          <a href="#resultados">Resultados</a>
+          <a href="#equipo">Equipo</a>
+        </nav>
       </div>
-    </section>
+    </header>
 
-    <!-- ===================== VIDEO ===================== -->
-    <section class="seccion seccion--blanca" id="video">
-      <div class="contenedor">
-        <h2>Míralo en un minuto y medio</h2>
-        <p class="intro">Esta animación explica por qué es tan difícil saber quién golpeó primero a simple vista, y cómo lo resuelve Sen Tsuki.</p>
-        <div class="video">
-          <iframe src="https://www.youtube-nocookie.com/embed/37KhH7IEXIQ" title="Sen Tsuki: animación explicativa" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-        <p class="pie-video">Animación ilustrativa con muñecos esquemáticos: los tiempos y resultados que muestra son un ejemplo, no datos medidos. <a href="https://youtu.be/37KhH7IEXIQ" target="_blank" rel="noopener">Ver en YouTube</a>.</p>
-      </div>
-    </section>
-
-    <!-- ===================== PROBLEMA ===================== -->
-    <section class="seccion" id="problema">
-      <div class="contenedor">
-        <h2>El problema</h2>
-        <p class="intro">En karate, quién conecta primero un golpe se decide en fracciones de segundo y depende de lo que alcanzan a ver los jueces.</p>
-        <div class="grid g3">
-          <article class="tarjeta">
-            <h3>Difícil de juzgar a simple vista</h3>
-            <p>Cuando dos golpes llegan casi juntos, no se puede saber con certeza cuál fue primero. Incluso al repetir la jugada, la decisión depende de quién mira y desde dónde.</p>
-          </article>
-          <article class="tarjeta">
-            <h3>Hay error humano</h3>
-            <p>Dos jueces pueden ver cosas distintas. Sin una medición, la discusión no tiene dónde apoyarse.</p>
-          </article>
-          <article class="tarjeta">
-            <h3>Sin retroalimentación inmediata</h3>
-            <p>Quien entrena la velocidad y la precisión del <em>tsuki</em> depende de la opinión del instructor para saber si fue rápido o si acertó.</p>
-          </article>
-        </div>
-        <p style="margin-top:28px">En otros deportes de combate ya se usan sensores para resolver este tipo de discusión. En taekwondo, por ejemplo, la subjetividad del puntaje generó disputas y se incorporaron protectores electrónicos con sensores inalámbricos <a href="#referencias">[1]</a>. Quisimos algo pensado para el karate, accesible, portátil y construido por nosotros.</p>
-        <p class="destacado"><strong>Objetivo:</strong> que los alumnos puedan <strong>practicar velocidad y precisión</strong> con un resultado inmediato y medido, y que las exhibiciones y torneos del dojo cuenten con una referencia objetiva de quién golpeó primero.</p>
-      </div>
-    </section>
-
-    <!-- ===================== SOLUCIÓN ===================== -->
-    <section class="seccion seccion--blanca" id="solucion">
-      <div class="contenedor">
-        <h2>La solución</h2>
-        <p class="intro"><strong>Sen Tsuki</strong> reemplaza la apreciación visual por una medición. Es un sistema de tres partes.</p>
-        <div class="grid g3">
-          <article class="tarjeta tarjeta--oro">
-            <h3>Dos almohadillas</h3>
-            <p>Una para Aka y otra para Ao. Cada una lleva un sensor piezoeléctrico y un microcontrolador: detectan el impacto, filtran el ruido y avisan por radio.</p>
-          </article>
-          <article class="tarjeta tarjeta--oro">
-            <h3>Un receptor</h3>
-            <p>Recibe los avisos, decide quién llegó primero y lo muestra en una pantalla. Se arma con un sensor táctil que toca el juez.</p>
-          </article>
-          <article class="tarjeta tarjeta--oro">
-            <h3>Un marcador web</h3>
-            <p>Una página lee el resultado del receptor y muestra Aka contra Ao, con puntaje, en pantalla grande para jueces y público.</p>
-          </article>
-        </div>
-
-        <div class="grid g2" style="margin-top:32px; align-items:start">
+    <main id="contenido">
+      <!-- ===================== PORTADA ===================== -->
+      <section class="portada" id="inicio">
+        <div class="contenedor">
           <div>
-            <h3>Qué lo diferencia de lo que existe</h3>
-            <ul>
-              <li>Está pensado para <strong>karate</strong> y para entrenar <strong>velocidad y precisión</strong>.</li>
-              <li>Es <strong>propio</strong>: lo diseñamos y lo construimos nosotros.</li>
-              <li>Es <strong>portátil</strong>: usa radio ESP-NOW, así que no necesita router, internet ni un lugar con WiFi.</li>
-              <li>Usa <strong>componentes comunes</strong> de electrónica, fáciles de conseguir.</li>
-              <li>Un golpe <strong>solo cuenta si impacta la almohadilla</strong>: un golpe que pasa de largo no genera señal.</li>
-            </ul>
+            <p class="sobretitulo">
+              Jornadas de Innovación 2026 · Magíster en Ingeniería Informática ·
+              UNAB
+            </p>
+            <h1>Sen Tsuki</h1>
+            <p class="bajada">
+              ¿Quién conecta primero? Medición con sensores para karate.
+            </p>
+            <p class="texto">
+              Dos almohadillas con sensor piezoeléctrico avisan por radio a un
+              receptor, y el receptor decide, sin depender de la mirada de
+              nadie, quién llegó primero: <strong>Aka</strong> (rojo) o
+              <strong>Ao</strong> (azul). Un proyecto del equipo
+              <strong>Los Raules</strong>, construido para el dojo
+              <strong>KenDoKan</strong>.
+            </p>
+            <div class="botones">
+              <a class="boton" href="#video">Ver la animación</a>
+              <a class="boton boton--claro" href="#resultados"
+                >Ver los resultados</a
+              >
+            </div>
           </div>
-          <figure class="foto-estrecha" style="justify-self:center">
-            <button class="zoom" type="button" data-leyenda="Las dos almohadillas, roja y azul, y encima el receptor. Los parches plateados marcan la zona del sensor.">
-              <img src="assets/img/foto_almohadillas.jpg" width="1400" height="1756" loading="lazy" alt="Dos almohadillas, una azul y una roja, sobre una colchoneta, con el receptor encima">
-            </button>
-            <figcaption class="leyenda">Las dos almohadillas (azul y roja) y, encima, el receptor. Los parches plateados marcan la zona del sensor.</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== CÓMO FUNCIONA ===================== -->
-    <section class="seccion" id="como-funciona">
-      <div class="contenedor">
-        <h2>Cómo funciona</h2>
-        <p class="intro">Del golpe al resultado hay cuatro componentes que se hablan por radio y por cable. Estos diagramas muestran cómo se conectan y qué ocurre en una ronda.</p>
-
-        <h3>Arquitectura</h3>
-        <div class="diagrama">
-          <svg viewBox="0 0 1000 450" role="img" aria-labelledby="t1 d1">
-            <title id="t1">Arquitectura del sistema</title>
-            <desc id="d1">Dos almohadillas, A y B, envían mensajes por radio ESP-NOW a un receptor con pantalla OLED y sensor táctil. El receptor envía el resultado por USB serie a un marcador web.</desc>
-            <defs>
-              <marker id="f1" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="d-flecha"/></marker>
-            </defs>
-            <rect class="d-a" x="20" y="50" width="240" height="130" rx="18"/>
-            <text class="d-tg" x="140" y="102" text-anchor="middle">Almohadilla A</text>
-            <text class="d-ts" x="140" y="136" text-anchor="middle">Aka · piezo + ESP32-C3</text>
-            <rect class="d-b" x="20" y="270" width="240" height="130" rx="18"/>
-            <text class="d-tg" x="140" y="322" text-anchor="middle">Almohadilla B</text>
-            <text class="d-ts" x="140" y="356" text-anchor="middle">Ao · piezo + ESP32-C3</text>
-
-            <path class="d-linea" d="M262 115 H340 V203 H446" marker-end="url(#f1)"/>
-            <path class="d-linea" d="M262 335 H340 V267 H446" marker-end="url(#f1)"/>
-            <text class="d-ta" x="301" y="100" text-anchor="middle">ESP-NOW</text>
-            <text class="d-ta" x="301" y="368" text-anchor="middle">ESP-NOW</text>
-
-            <rect class="d-rx" x="450" y="140" width="240" height="190" rx="18"/>
-            <text class="d-tg" x="570" y="200" text-anchor="middle">Receptor</text>
-            <text class="d-t" x="570" y="236" text-anchor="middle">ESP32 DevKit</text>
-            <text class="d-ts" x="570" y="266" text-anchor="middle">pantalla OLED</text>
-            <text class="d-ts" x="570" y="290" text-anchor="middle">sensor táctil</text>
-
-            <path class="d-linea" d="M692 235 H796" marker-end="url(#f1)"/>
-            <text class="d-ta" x="744" y="216" text-anchor="middle" style="font-size:16px">USB serie</text>
-
-            <rect class="d-caja" x="800" y="160" width="180" height="150" rx="18"/>
-            <text class="d-t" x="890" y="222" text-anchor="middle" style="font-size:20px">Marcador web</text>
-            <text class="d-ts" x="890" y="254" text-anchor="middle">Aka vs Ao</text>
-            <text class="d-ts" x="890" y="278" text-anchor="middle">pantalla grande</text>
-          </svg>
-        </div>
-        <p class="leyenda">La radio ESP-NOW conecta las almohadillas con el receptor sin router ni internet. El receptor se conecta por cable USB a un computador, que muestra el marcador.</p>
-
-        <h3 style="margin-top:44px">Del golpe al resultado</h3>
-        <ol class="pasos">
-          <li><h4>Golpe</h4><p>El impacto deforma el disco piezoeléctrico pegado a la almohadilla.</p></li>
-          <li><h4>Señal</h4><p>El piezo genera un pulso de voltaje de pocos milisegundos. Un circuito lo protege y lo mantiene estable.</p></li>
-          <li><h4>Detección</h4><p>El microcontrolador lee la señal sin parar. Si supera un umbral calibrado, hay un golpe válido.</p></li>
-          <li><h4>Aviso</h4><p>Envía por radio un mensaje de un solo carácter, <strong>A</strong> o <strong>B</strong>, al receptor.</p></li>
-          <li><h4>Decisión</h4><p>El receptor registra el <strong>primer mensaje que llega</strong> y bloquea los siguientes.</p></li>
-          <li><h4>Resultado</h4><p>Lo muestra en su pantalla y lo envía al marcador web, para que todo el dojo lo vea.</p></li>
-        </ol>
-
-        <h3 style="margin-top:44px">Una ronda, paso a paso</h3>
-        <div class="diagrama diagrama--ancho">
-          <svg viewBox="0 0 1000 640" role="img" aria-labelledby="t2 d2">
-            <title id="t2">Secuencia de una ronda</title>
-            <desc id="d2">El juez toca el sensor del receptor y el marcador muestra LISTO. Las almohadillas A y B envían sus golpes; el receptor declara ganador al primero que llega, lo muestra y lo envía al marcador. El juez toca el sensor para una nueva ronda.</desc>
-            <defs>
-              <marker id="f2" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="d-flecha"/></marker>
-            </defs>
-            <!-- cabezas -->
-            <rect class="d-caja" x="20" y="14" width="160" height="48" rx="12"/><text class="d-t" x="100" y="45" text-anchor="middle">Juez</text>
-            <rect class="d-a" x="220" y="14" width="160" height="48" rx="12"/><text class="d-t" x="300" y="45" text-anchor="middle" style="font-size:17px">Almohadilla A</text>
-            <rect class="d-b" x="420" y="14" width="160" height="48" rx="12"/><text class="d-t" x="500" y="45" text-anchor="middle" style="font-size:17px">Almohadilla B</text>
-            <rect class="d-rx" x="620" y="14" width="160" height="48" rx="12"/><text class="d-t" x="700" y="45" text-anchor="middle">Receptor</text>
-            <rect class="d-caja" x="820" y="14" width="160" height="48" rx="12"/><text class="d-t" x="900" y="45" text-anchor="middle" style="font-size:17px">Marcador web</text>
-            <!-- líneas de vida -->
-            <line class="d-vida" x1="100" y1="62" x2="100" y2="612"/>
-            <line class="d-vida" x1="300" y1="62" x2="300" y2="612"/>
-            <line class="d-vida" x1="500" y1="62" x2="500" y2="612"/>
-            <line class="d-vida" x1="700" y1="62" x2="700" y2="612"/>
-            <line class="d-vida" x1="900" y1="62" x2="900" y2="612"/>
-            <!-- mensajes -->
-            <path class="d-linea" style="stroke-width:3" d="M100 112 H696" marker-end="url(#f2)"/>
-            <text class="d-ta" x="398" y="102" text-anchor="middle">Toca el sensor (arma la ronda)</text>
-            <path class="d-linea" style="stroke-width:3" d="M700 162 H896" marker-end="url(#f2)"/>
-            <text class="d-ta" x="798" y="152" text-anchor="middle">LISTO</text>
-            <rect class="d-nota" x="520" y="186" width="360" height="40" rx="8"/>
-            <text class="d-t" x="700" y="212" text-anchor="middle" style="font-size:16px">Gracia de 500 ms: ignora golpes</text>
-
-            <path class="d-linea" style="stroke-width:3" d="M300 292 H696" marker-end="url(#f2)"/>
-            <text class="d-ta" x="498" y="282" text-anchor="middle">Golpe A (llega primero)</text>
-            <path class="d-linea" style="stroke-width:3" d="M500 347 H696" marker-end="url(#f2)"/>
-            <text class="d-ta" x="598" y="337" text-anchor="middle">Golpe B (llega después)</text>
-            <rect class="d-nota" x="520" y="372" width="360" height="58" rx="8"/>
-            <text class="d-t" x="700" y="397" text-anchor="middle" style="font-size:16px">Gana el primero en llegar (A).</text>
-            <text class="d-t" x="700" y="418" text-anchor="middle" style="font-size:16px">Ignora cualquier otro mensaje.</text>
-
-            <path class="d-linea" style="stroke-width:3" d="M700 472 H896" marker-end="url(#f2)"/>
-            <text class="d-ta" x="798" y="462" text-anchor="middle">Ganador: A</text>
-            <rect class="d-nota" x="580" y="496" width="240" height="40" rx="8"/>
-            <text class="d-t" x="700" y="522" text-anchor="middle" style="font-size:16px">Pantalla: AKA GANA</text>
-
-            <path class="d-linea" style="stroke-width:3" d="M100 587 H696" marker-end="url(#f2)"/>
-            <text class="d-ta" x="398" y="577" text-anchor="middle">Toca el sensor (nueva ronda)</text>
-          </svg>
-        </div>
-        <p class="pista">Desliza el diagrama hacia los lados para verlo completo.</p>
-        <p class="leyenda"><strong>Por qué gana el primero en llegar y no el de menor tiempo:</strong> cada placa cuenta el tiempo desde su propio encendido, así que sus relojes no son comparables. En una prueba, la diferencia entre dos placas llegó a 5681 ms. Por eso el sistema no compara horas: decide por orden de llegada al receptor.</p>
-
-        <h3 style="margin-top:44px">Estados del receptor</h3>
-        <div class="diagrama">
-          <svg viewBox="0 60 1000 270" role="img" aria-labelledby="t3 d3">
-            <title id="t3">Estados del receptor</title>
-            <desc id="d3">El receptor pasa de Arranque a Espera, y de Espera a Listo cuando se toca el sensor. En Listo, el primer mensaje A o B lo lleva a Ganador. Desde Ganador, un nuevo toque lo devuelve a Listo.</desc>
-            <defs>
-              <marker id="f3" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="d-flecha"/></marker>
-            </defs>
-            <rect class="d-caja" x="30" y="90" width="170" height="110" rx="16"/>
-            <text class="d-tg" x="115" y="132" text-anchor="middle">Arranque</text>
-            <text class="d-ts" x="115" y="162" text-anchor="middle">KenDoKan</text>
-            <text class="d-ts" x="115" y="184" text-anchor="middle">parpadea</text>
-
-            <rect class="d-caja" x="285" y="90" width="170" height="110" rx="16"/>
-            <text class="d-tg" x="370" y="132" text-anchor="middle">Espera</text>
-            <text class="d-ts" x="370" y="162" text-anchor="middle">"Toca el</text>
-            <text class="d-ts" x="370" y="184" text-anchor="middle">sensor"</text>
-
-            <rect class="d-nota" x="540" y="90" width="170" height="110" rx="16" style="stroke-width:4"/>
-            <text class="d-tg" x="625" y="132" text-anchor="middle">Listo</text>
-            <text class="d-ts" x="625" y="162" text-anchor="middle">pantalla LISTO</text>
-            <text class="d-ts" x="625" y="184" text-anchor="middle">acepta golpes</text>
-
-            <rect class="d-rx" x="795" y="90" width="170" height="110" rx="16"/>
-            <text class="d-tg" x="880" y="132" text-anchor="middle">Ganador</text>
-            <text class="d-ts" x="880" y="162" text-anchor="middle">AKA GANA</text>
-            <text class="d-ts" x="880" y="184" text-anchor="middle">o AO GANA</text>
-
-            <path class="d-linea" d="M202 145 H283" marker-end="url(#f3)"/>
-            <text class="d-ts" x="242" y="104" text-anchor="middle" style="font-size:14px">animación</text>
-            <text class="d-ts" x="242" y="120" text-anchor="middle" style="font-size:14px">KenDoKan</text>
-            <path class="d-linea" d="M457 145 H538" marker-end="url(#f3)"/>
-            <text class="d-ts" x="497" y="104" text-anchor="middle" style="font-size:14px">toque en</text>
-            <text class="d-ts" x="497" y="120" text-anchor="middle" style="font-size:14px">el sensor</text>
-            <path class="d-linea" d="M712 145 H793" marker-end="url(#f3)"/>
-            <text class="d-ts" x="752" y="88" text-anchor="middle" style="font-size:14px">primer</text>
-            <text class="d-ts" x="752" y="104" text-anchor="middle" style="font-size:14px">mensaje</text>
-            <text class="d-ts" x="752" y="120" text-anchor="middle" style="font-size:14px">A o B</text>
-            <path class="d-linea" d="M880 202 V262 H625 V204" marker-end="url(#f3)"/>
-            <text class="d-ta" x="752" y="294" text-anchor="middle">toque en el sensor (nueva ronda)</text>
-          </svg>
-        </div>
-        <p class="leyenda">Después de mostrar al ganador, el sensor se ignora un segundo, para que un toque accidental no borre el resultado.</p>
-
-        <h3 style="margin-top:44px">El circuito del sensor</h3>
-        <div class="diagrama">
-          <svg viewBox="0 0 840 390" role="img" aria-labelledby="t4 d4">
-            <title id="t4">Circuito del sensor piezoeléctrico</title>
-            <desc id="d4">El piezo se conecta entre el pin de entrada y tierra. En paralelo con el piezo hay una resistencia a tierra y un diodo Zener de 3,6 voltios con la banda hacia el pin de entrada.</desc>
-            <defs>
-              <marker id="f4" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="d-flecha"/></marker>
-            </defs>
-            <text class="d-t" x="20" y="44">Piezo (no necesita alimentación)</text>
-            <!-- piezo -->
-            <circle cx="110" cy="190" r="44" fill="#f6e7a0" stroke="#141010" stroke-width="3"/>
-            <path d="M86 190 q12 -24 24 0 t24 0" fill="none" stroke="#141010" stroke-width="3"/>
-            <path d="M110 146 V90 H480" fill="none" stroke="#c8003a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M110 234 V300 H480" fill="none" stroke="#141010" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-            <text class="d-ts" x="122" y="128">+ rojo</text>
-            <text class="d-ts" x="122" y="272">− negro</text>
-            <!-- nodo 1 y resistencia -->
-            <circle cx="270" cy="90" r="6" class="d-oscuro"/>
-            <path class="d-linea" d="M270 90 V125 L254 137 L286 161 L254 185 L286 209 L254 233 L270 245 V300"/>
-            <circle cx="270" cy="300" r="6" class="d-oscuro"/>
-            <text class="d-t" x="300" y="166">R1</text>
-            <text class="d-ts" x="300" y="190">1 MΩ en ESP32</text>
-            <text class="d-ts" x="300" y="212">100 kΩ en C3</text>
-            <!-- nodo 2 y zener -->
-            <circle cx="480" cy="90" r="6" class="d-oscuro"/>
-            <path class="d-linea" d="M480 90 V164 M462 164 H498 M462 164 V174 M498 164 V154"/>
-            <path class="d-linea" d="M462 205 H498 L480 168 Z"/>
-            <path class="d-linea" d="M480 205 V300"/>
-            <circle cx="480" cy="300" r="6" class="d-oscuro"/>
-            <text class="d-t" x="515" y="166">Zener 3,6 V</text>
-            <text class="d-ts" x="515" y="190">banda hacia</text>
-            <text class="d-ts" x="515" y="212">el pin de entrada</text>
-            <!-- hacia el ADC -->
-            <path class="d-linea" d="M486 90 H636" marker-end="url(#f4)"/>
-            <rect class="d-rx" x="640" y="50" width="180" height="80" rx="14"/>
-            <text class="d-t" x="730" y="86" text-anchor="middle" style="font-size:22px">Pin del ADC</text>
-            <text class="d-ts" x="730" y="112" text-anchor="middle">34 ESP32 · 3 C3</text>
-            <!-- tierra -->
-            <path class="d-linea" d="M265 300 V320"/>
-            <path class="d-linea" d="M243 320 H287 M251 331 H279 M259 342 H271"/>
-            <text class="d-ts" x="265" y="372" text-anchor="middle">GND (tierra)</text>
-          </svg>
-        </div>
-        <p class="leyenda">La resistencia ancla el pin a tierra en reposo y el diodo Zener recorta los picos de voltaje del piezo para proteger la entrada. <strong>Los dos van en paralelo</strong>, cada uno directo del pin a tierra. Sin la resistencia, el pin queda flotando y registra "golpes" que nadie dio.</p>
-
-        <div class="grid g2" style="margin-top:36px; align-items:start">
-          <figure>
-            <button class="zoom" type="button" data-leyenda="El receptor conectado por USB a un notebook, y el marcador web mostrando Aka y Ao.">
-              <img src="assets/img/foto_marcador.jpg" width="1400" height="1035" loading="lazy" alt="Notebook con el marcador web mostrando Aka y Ao, junto al receptor azul conectado por USB">
-            </button>
-            <figcaption class="leyenda">El receptor, conectado por USB a un notebook, y el marcador web mostrando Aka y Ao.</figcaption>
-          </figure>
-          <figure>
-            <button class="zoom" type="button" data-leyenda="El receptor: pantalla OLED con el nombre del dojo y sensor táctil circular.">
-              <img src="assets/img/foto_receptor.jpg" width="1400" height="1024" loading="lazy" alt="Receptor azul con pantalla OLED que dice KenDoKan, Toca el sensor, y un sensor táctil circular">
-            </button>
-            <figcaption class="leyenda">El receptor: pantalla OLED a la derecha y sensor táctil circular a la izquierda. Arriba se ve la entrada USB-C.</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== IMPACTO ===================== -->
-    <section class="seccion seccion--blanca" id="impacto">
-      <div class="contenedor">
-        <h2>El impacto</h2>
-        <p class="intro">Qué beneficio buscamos para cada persona que participa en una clase, una exhibición o un torneo.</p>
-        <div class="grid g4">
-          <article class="tarjeta">
-            <h3>Alumnos</h3>
-            <p>Reciben retroalimentación inmediata: ven al instante si su golpe fue el primero y si realmente impactó el blanco.</p>
-          </article>
-          <article class="tarjeta">
-            <h3>Instructores y jueces</h3>
-            <p>Cuentan con una referencia medida para apoyar la decisión cuando los golpes llegan casi juntos.</p>
-          </article>
-          <article class="tarjeta">
-            <h3>Público y dojo</h3>
-            <p>El resultado aparece en pantalla grande y todos lo ven al mismo tiempo, con el mismo criterio.</p>
-          </article>
-          <article class="tarjeta">
-            <h3>Otros dojos</h3>
-            <p>El sistema es portátil, no necesita internet y usa componentes comunes, así que puede llevarse a otros lugares.</p>
-          </article>
-        </div>
-        <h3 style="margin-top:36px">Qué mejora, en concreto</h3>
-        <ul>
-          <li><strong>Menos dependencia de la mirada.</strong> La decisión de quién llegó primero la toma el sensor.</li>
-          <li><strong>Más claridad.</strong> Un resultado único, visible para todos, en lugar de varias opiniones.</li>
-          <li><strong>Entrenamiento con retroalimentación.</strong> Cada golpe de práctica tiene respuesta inmediata.</li>
-          <li><strong>Menos infraestructura.</strong> No hace falta router, conexión a internet ni instalación fija.</li>
-        </ul>
-        <p class="nota">Estas mejoras son el objetivo del proyecto. Todavía no se midieron con alumnos y jueces: la validación en un torneo completo es parte del trabajo futuro.</p>
-      </div>
-    </section>
-
-    <!-- ===================== HISTORIA ===================== -->
-    <section class="seccion" id="historia">
-      <div class="contenedor">
-        <h2>Cómo se desarrolló</h2>
-        <p class="intro">Sen Tsuki no nació como una caja ni como un marcador. Empezó con una pregunta del dojo: <strong>¿se puede saber, con un aparato, quién golpeó primero?</strong> Estas son las etapas, con fotos del proceso real.</p>
-
-        <ol class="linea-tiempo">
-          <li class="etapa">
-            <div class="num" aria-hidden="true">1</div>
-            <div class="etapa-cuerpo una">
-              <div>
-                <h3>La idea inicial</h3>
-                <p>La primera idea fue meter un sensor de vibración <strong>KY-031</strong> dentro de una almohadilla y avisar por <strong>Bluetooth</strong>. La descartamos antes de construirla: el KY-031 solo entrega encendido o apagado, rebota y no distingue la fuerza del golpe, y la latencia de Bluetooth es poco predecible.</p>
-                <p>El cambio fue a un <strong>disco piezoeléctrico</strong>, que genera una señal proporcional al impacto, y a una comunicación por <strong>WiFi y UDP</strong>.</p>
-              </div>
-            </div>
-          </li>
-
-          <li class="etapa">
-            <div class="num" aria-hidden="true">2</div>
-            <div class="etapa-cuerpo">
-              <div>
-                <h3>El primer prototipo, sobre una protoboard</h3>
-                <p>Tres placas ESP32 sobre la mesa: dos para las almohadillas (A y B) y una para el receptor, con una pantalla OLED que todavía decía "Presiona boton". Los dos discos piezoeléctricos se ven a los lados, y en la hoja quedaron anotadas las direcciones MAC de cada placa, necesarias para que se hablen entre sí.</p>
-              </div>
-              <figure>
-                <button class="zoom" type="button" data-leyenda="Primer prototipo: ESP32 con pantalla OLED, dos piezos y la hoja con las direcciones MAC.">
-                  <img src="assets/img/historia/01_prototipo_protoboard.jpg" width="1400" height="775" loading="lazy" alt="Placa ESP32 sobre una protoboard con una pantalla OLED, dos discos piezoeléctricos y una hoja con direcciones anotadas a mano">
-                </button>
-                <figcaption class="leyenda">Primer prototipo, sobre protoboard.</figcaption>
-              </figure>
-            </div>
-          </li>
-
-          <li class="etapa">
-            <div class="num" aria-hidden="true">3</div>
-            <div class="etapa-cuerpo">
-              <div>
-                <h3>Las primeras paletas</h3>
-                <p>Para probar la idea en un golpe real usamos <strong>paletas de foco</strong>: dentro de la palma pusimos una ESP32 con una protoboard pequeña, la resistencia y el diodo Zener. El disco piezoeléctrico (el círculo dorado) quedó en el centro de la cara de golpeo, sujeto con cinta negra.</p>
-              </div>
-              <div class="fotos fotos--2">
-                <figure>
-                  <button class="zoom" type="button" data-leyenda="Primera versión: la electrónica en la palma de la paleta y el sensor al centro de la cara de golpeo.">
-                    <img src="assets/img/historia/02_primera_paleta_guante.jpg" width="913" height="1437" loading="lazy" alt="Paleta de foco roja con una ESP32 en la palma y, abajo, la cara de golpeo con el piezo bajo cinta negra">
-                  </button>
-                  <figcaption class="leyenda">Electrónica en la palma y sensor al centro.</figcaption>
-                </figure>
-                <figure>
-                  <button class="zoom" type="button" data-leyenda="Detalle: ESP32, protoboard pequeña, resistencia y Zener dentro de la paleta.">
-                    <img src="assets/img/historia/03_primera_paleta_detalle.jpg" width="1400" height="1578" loading="lazy" alt="Detalle de una ESP32 con protoboard pequeña, resistencia y diodo, dentro de una paleta roja">
-                  </button>
-                  <figcaption class="leyenda">Detalle: ESP32, resistencia y Zener.</figcaption>
-                </figure>
-              </div>
-            </div>
-          </li>
-
-          <li class="etapa">
-            <div class="num" aria-hidden="true">4</div>
-            <div class="etapa-cuerpo">
-              <div>
-                <h3>Más chico: de la ESP32 a la ESP32-C3</h3>
-                <p>La ESP32 DevKit funcionaba, pero era grande para ir en una almohadilla. La <strong>ESP32-C3 Super Mini</strong> es mucho más pequeña y de menor consumo, así que pasó a las almohadillas.</p>
-                <p>El cambio exigió recalibrar: su ADC se comporta distinto y la resistencia de 1 MΩ dejaba el pin flotando, por lo que se usó una de <strong>100 kΩ</strong>.</p>
-              </div>
-              <figure class="foto-estrecha">
-                <button class="zoom" type="button" data-leyenda="Arriba, la ESP32 DevKit. Abajo, la ESP32-C3 Super Mini.">
-                  <img src="assets/img/historia/04_esp32_vs_c3.jpg" width="1136" height="1584" loading="lazy" alt="Una mano sostiene una placa ESP32 DevKit y, debajo, una ESP32-C3 Super Mini mucho más pequeña">
-                </button>
-                <figcaption class="leyenda">Arriba, la ESP32 DevKit. Abajo, la ESP32-C3 Super Mini.</figcaption>
-              </figure>
-            </div>
-          </li>
-
-          <li class="etapa">
-            <div class="num" aria-hidden="true">5</div>
-            <div class="etapa-cuerpo una">
-              <div>
-                <h3>Las paletas del dojo</h3>
-                <p>Después pasamos a las <strong>paletas de entrenamiento del dojo</strong>, las mismas que se usan en clase. La C3 se sujeta con cinta en el extremo del mango, y un cable USB-C permite programarla y alimentarla. El parche plateado de la cara de golpeo marca la zona del sensor.</p>
-              </div>
-              <div class="fotos fotos--3">
-                <figure>
-                  <button class="zoom" type="button" data-leyenda="La ESP32-C3 sujeta con cinta en el mango de la paleta azul.">
-                    <img src="assets/img/historia/05_paleta_azul_con_c3.jpg" width="533" height="524" loading="lazy" alt="Placa ESP32-C3 sujeta con cinta negra al mango de una paleta azul">
-                  </button>
-                  <figcaption class="leyenda">La C3 en el mango.</figcaption>
-                </figure>
-                <figure>
-                  <button class="zoom" type="button" data-leyenda="El cable USB-C conectado al mango de la paleta azul.">
-                    <img src="assets/img/historia/06_paleta_azul_usb.jpg" width="396" height="473" loading="lazy" alt="Cable USB-C conectado al mango de una paleta azul, junto a un teclado">
-                  </button>
-                  <figcaption class="leyenda">El cable USB-C en el mango.</figcaption>
-                </figure>
-                <figure>
-                  <button class="zoom" type="button" data-leyenda="Las dos paletas, Ao (azul) y Aka (roja), con su parche plateado.">
-                    <img src="assets/img/historia/07_paletas_del_dojo.jpg" width="397" height="431" loading="lazy" alt="Dos paletas de entrenamiento, una azul y una roja, cada una con un parche plateado">
-                  </button>
-                  <figcaption class="leyenda">Las dos paletas, Ao y Aka.</figcaption>
-                </figure>
-              </div>
-            </div>
-          </li>
-
-          <li class="etapa">
-            <div class="num" aria-hidden="true">6</div>
-            <div class="etapa-cuerpo">
-              <div>
-                <h3>El receptor: de la protoboard a la caja</h3>
-                <p>El receptor pasó por varias formas. Primero llevaba LEDs rojo y azul para mostrar al ganador, pero se comportaban de forma errática; los reemplazó una <strong>pantalla OLED</strong>. El botón, que al principio era un cable puenteado, pasó a ser un <strong>sensor táctil</strong>. Y la electrónica terminó en una <strong>caja impresa en 3D</strong>.</p>
-              </div>
-              <div class="fotos fotos--2">
-                <figure>
-                  <button class="zoom" type="button" data-leyenda="Primera caja del receptor, con la pantalla OLED y una powerbank.">
-                    <img src="assets/img/historia/08_receptor_prototipo.jpg" width="407" height="512" loading="lazy" alt="Receptor dentro de una caja negra, con una pantalla OLED que dice KenDoKan y una powerbank azul detrás">
-                  </button>
-                  <figcaption class="leyenda">Primera caja del receptor.</figcaption>
-                </figure>
-                <figure>
-                  <button class="zoom" type="button" data-leyenda="Una impresora 3D imprimiendo una pieza de la caja azul.">
-                    <img src="assets/img/historia/09_impresion_caja.jpg" width="700" height="489" loading="lazy" alt="Impresora 3D imprimiendo una pieza azul de la caja del receptor">
-                  </button>
-                  <figcaption class="leyenda">Impresión de una pieza de la caja.</figcaption>
-                </figure>
-              </div>
-            </div>
-          </li>
-
-          <li class="etapa">
-            <div class="num" aria-hidden="true">7</div>
-            <div class="etapa-cuerpo una">
-              <div>
-                <h3>Del cable al marcador web</h3>
-                <p>La primera versión del marcador era una aplicación en el computador que recibía los golpes por WiFi y UDP. La versión actual lee directamente el puerto serie del receptor desde una página web, para proyectar el resultado al público. Así el marcador quedó independiente del WiFi del lugar.</p>
-              </div>
-            </div>
-          </li>
-        </ol>
-
-        <h3 style="margin-top:48px">Lo que aprendimos</h3>
-        <div class="grid g2">
-          <article class="tarjeta"><h4>Un pin sin resistencia "oye" cosas que no pasaron</h4><p>Sin la resistencia a tierra, el sensor dispara solo.</p></article>
-          <article class="tarjeta"><h4>Cada placa tiene su propio reloj</h4><p>Comparar la hora de dos placas dio 5681 ms de diferencia: había que decidir por orden de llegada.</p></article>
-          <article class="tarjeta"><h4>No se dibuja desde la tarea de radio</h4><p>Dos partes del programa escribiendo en la pantalla a la vez la dejaron con textos mezclados.</p></article>
-          <article class="tarjeta"><h4>Lo que funciona en una placa se recalibra en otra</h4><p>El mismo circuito se comportó distinto en la ESP32 y en la ESP32-C3.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== RESULTADOS ===================== -->
-    <section class="seccion seccion--blanca" id="resultados">
-      <div class="contenedor">
-        <h2>Resultados de las pruebas</h2>
-        <p class="intro">Qué medimos durante el desarrollo y qué pasó en una actividad real con alumnos del dojo.</p>
-
-        <div class="cifras">
-          <div class="cifra"><b>16–104</b><span>señal del sensor en reposo (escala 0 a 4095)</span></div>
-          <div class="cifra"><b>650–4095</b><span>señal al golpear, en pruebas de banco</span></div>
-          <div class="cifra"><b>~250</b><span>golpes en la actividad con alumnos, 5 por alumno</span></div>
-          <div class="cifra"><b>~50</b><span>alumnos participaron, con tsuki y mawashi geri</span></div>
-        </div>
-
-        <h3>Pruebas de banco</h3>
-        <p>Muestras reales del sensor durante el desarrollo. Con el umbral en 500, las lecturas de reposo quedan muy por debajo y los golpes medidos quedan por encima.</p>
-        <div class="chart">
-          <svg viewBox="0 0 940 340" role="img" aria-labelledby="tg dg" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif">
-          <title id="tg">Muestras reales del sensor: 16 en reposo y 11 golpes</title>
-          <desc id="dg">Gráfico de barras con 27 lecturas del sensor, de 0 a 4095. Las lecturas de reposo, entre 16 y 104, quedan muy por debajo del umbral de 500; los golpes medidos, entre 650 y 4095, quedan por encima.</desc>
-          <line x1="78" y1="290.0" x2="922" y2="290.0" stroke="#e5dcb8" stroke-width="1.5"/>
-          <text x="70" y="295.0" text-anchor="end" font-size="14" fill="#3b3030">0</text>
-          <line x1="78" y1="226.5" x2="922" y2="226.5" stroke="#e5dcb8" stroke-width="1.5"/>
-          <text x="70" y="231.5" text-anchor="end" font-size="14" fill="#3b3030">1000</text>
-          <line x1="78" y1="163.0" x2="922" y2="163.0" stroke="#e5dcb8" stroke-width="1.5"/>
-          <text x="70" y="168.0" text-anchor="end" font-size="14" fill="#3b3030">2000</text>
-          <line x1="78" y1="99.5" x2="922" y2="99.5" stroke="#e5dcb8" stroke-width="1.5"/>
-          <text x="70" y="104.5" text-anchor="end" font-size="14" fill="#3b3030">3000</text>
-          <line x1="78" y1="36.0" x2="922" y2="36.0" stroke="#e5dcb8" stroke-width="1.5"/>
-          <text x="70" y="41.0" text-anchor="end" font-size="14" fill="#3b3030">4000</text>
-          <rect x="82.6" y="285.9" width="22" height="4.1" fill="#8a8070"/>
-          <rect x="113.9" y="288.0" width="22" height="2.0" fill="#8a8070"/>
-          <rect x="145.1" y="287.5" width="22" height="2.5" fill="#8a8070"/>
-          <rect x="176.4" y="288.0" width="22" height="2.0" fill="#8a8070"/>
-          <rect x="207.7" y="288.8" width="22" height="1.2" fill="#8a8070"/>
-          <rect x="238.9" y="206.6" width="22" height="83.4" fill="#141010"/>
-          <text x="249.9" y="200.6" text-anchor="middle" font-size="11" font-weight="700" fill="#141010">1313</text>
-          <rect x="270.2" y="30.0" width="22" height="260.0" fill="#141010"/>
-          <rect x="301.4" y="30.0" width="22" height="260.0" fill="#141010"/>
-          <rect x="332.7" y="284.9" width="22" height="5.1" fill="#8a8070"/>
-          <rect x="364.0" y="288.8" width="22" height="1.2" fill="#8a8070"/>
-          <rect x="395.2" y="288.5" width="22" height="1.5" fill="#8a8070"/>
-          <rect x="426.5" y="283.4" width="22" height="6.6" fill="#8a8070"/>
-          <rect x="457.7" y="285.9" width="22" height="4.1" fill="#8a8070"/>
-          <rect x="489.0" y="288.0" width="22" height="2.0" fill="#8a8070"/>
-          <rect x="520.3" y="287.0" width="22" height="3.0" fill="#8a8070"/>
-          <rect x="551.5" y="284.3" width="22" height="5.7" fill="#8a8070"/>
-          <rect x="582.8" y="285.9" width="22" height="4.1" fill="#8a8070"/>
-          <rect x="614.0" y="288.0" width="22" height="2.0" fill="#8a8070"/>
-          <rect x="645.3" y="288.8" width="22" height="1.2" fill="#8a8070"/>
-          <rect x="676.6" y="240.4" width="22" height="49.6" fill="#141010"/>
-          <text x="687.6" y="234.4" text-anchor="middle" font-size="11" font-weight="700" fill="#141010">781</text>
-          <rect x="707.8" y="233.1" width="22" height="56.9" fill="#141010"/>
-          <text x="718.8" y="227.1" text-anchor="middle" font-size="11" font-weight="700" fill="#141010">896</text>
-          <rect x="739.1" y="247.7" width="22" height="42.3" fill="#141010"/>
-          <text x="750.1" y="241.7" text-anchor="middle" font-size="11" font-weight="700" fill="#141010">666</text>
-          <rect x="770.3" y="244.8" width="22" height="45.2" fill="#141010"/>
-          <text x="781.3" y="238.8" text-anchor="middle" font-size="11" font-weight="700" fill="#141010">712</text>
-          <rect x="801.6" y="196.9" width="22" height="93.1" fill="#141010"/>
-          <text x="812.6" y="190.9" text-anchor="middle" font-size="11" font-weight="700" fill="#141010">1466</text>
-          <rect x="832.9" y="231.2" width="22" height="58.8" fill="#141010"/>
-          <text x="843.9" y="225.2" text-anchor="middle" font-size="11" font-weight="700" fill="#141010">926</text>
-          <rect x="864.1" y="205.8" width="22" height="84.2" fill="#141010"/>
-          <text x="875.1" y="199.8" text-anchor="middle" font-size="11" font-weight="700" fill="#141010">1326</text>
-          <rect x="895.4" y="248.7" width="22" height="41.3" fill="#141010"/>
-          <text x="906.4" y="242.7" text-anchor="middle" font-size="11" font-weight="700" fill="#141010">650</text>
-          <line x1="78" y1="290" x2="922" y2="290" stroke="#141010" stroke-width="3"/>
-          <line x1="78" y1="258.3" x2="922" y2="258.3" stroke="#c8003a" stroke-width="3" stroke-dasharray="12 8"/>
-          <text x="84" y="250.3" font-size="16" font-weight="700" fill="#c8003a" stroke="#fff" stroke-width="5" paint-order="stroke">umbral = 500</text>
-          <text x="332.1" y="44" font-size="15" font-weight="700" fill="#141010">4095 = máximo del sensor (2 golpes)</text>
-          <text x="500.0" y="328" text-anchor="middle" font-size="15" fill="#3b3030">Muestras, en orden de registro</text>
-          <text transform="translate(14 160) rotate(-90)" text-anchor="middle" font-size="15" fill="#3b3030">Lectura del sensor (0–4095)</text>
-          </svg>
-        </div>
-        <p class="leyenda">Barras claras: reposo. Barras oscuras: golpe. Medido por el equipo en pruebas de banco; no incluye la actividad con alumnos.</p>
-
-        <h3 style="margin-top:36px">Bitácora de pruebas</h3>
-        <div class="tabla-wrap">
-          <table>
-            <thead><tr><th>Prueba</th><th>Resultado medido</th></tr></thead>
-            <tbody>
-              <tr><td>Pin sin resistencia a tierra</td><td>Lecturas de ~1000 a 4000 sin golpear (pin flotando).</td></tr>
-              <tr><td>ESP32 con resistencia</td><td>Reposo 16–104; golpes 1313–4095.</td></tr>
-              <tr><td>Umbral 500, almohadilla A (ESP32)</td><td>8 golpes consecutivos detectados: 650, 666, 712, 781, 896, 926, 1326 y 1466.</td></tr>
-              <tr><td>Hora de cada golpe por placa</td><td>Diferencia de 5681 ms entre placas: se descartó esta estrategia.</td></tr>
-              <tr><td>ESP32-C3 con resistencia de 1 MΩ</td><td>Pin flotando: 5 a 855 sin golpear.</td></tr>
-              <tr><td>ESP32-C3 con resistencia de 100 kΩ</td><td>Reposo 0–57; con el piezo conectado, ruido de 254 a 327 (máximo por ventana de 100 ms).</td></tr>
-              <tr><td>Actividad con alumnos</td><td>~50 alumnos, ~250 golpes (5 por alumno), tsuki y mawashi geri.</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3 style="margin-top:48px">La prueba en el dojo</h3>
-        <p>Almohadillas, receptor y marcador web en funcionamiento con unos 50 alumnos, cerca de 250 golpes en total. En el video se ve la actividad con un efecto de ilustración aplicado para proteger la identidad de los participantes.</p>
-        <div class="video">
-          <iframe src="https://www.youtube-nocookie.com/embed/Sx4s4t88YQE" title="Sen Tsuki: prueba real en el dojo, versión ilustrada" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-        <p class="pie-video">Imágenes reales de la actividad, con efecto de ilustración. <a href="https://youtu.be/Sx4s4t88YQE" target="_blank" rel="noopener">Ver en YouTube</a>.</p>
-
-        <!-- Para activar el enlace: pega la URL de Instagram en data-url -->
-        <aside class="insta" id="instagram" data-url="" hidden>
-          <p><strong>Más fotos de la actividad.</strong> El colegio publicó fotos del día en su cuenta de Instagram.</p>
-          <a class="boton" href="#" target="_blank" rel="noopener">Ver en Instagram</a>
-        </aside>
-
-        <p class="nota" style="margin-top:28px"><strong>Lo que todavía no medimos:</strong> la tasa de acierto de detección de las almohadillas (cuántos golpes reales detectó y cuántos no) y las falsas detecciones en reposo. Las cifras de la actividad son aproximadas y esa medición está pendiente.</p>
-      </div>
-    </section>
-
-    <!-- ===================== LIMITACIONES Y FUTURO ===================== -->
-    <section class="seccion" id="limitaciones">
-      <div class="contenedor">
-        <h2>Limitaciones y próximos pasos</h2>
-        <div class="grid g2" style="align-items:start">
-          <div>
-            <h3>Lo que hay que tener presente</h3>
-            <p>Este es un <strong>prototipo</strong>, no un sistema oficial de arbitraje.</p>
-            <ul>
-              <li><strong>Orden de llegada, no hora del golpe.</strong> Si dos golpes ocurren con diferencias de pocos milisegundos, el orden de llegada por radio puede no coincidir con el orden real.</li>
-              <li><strong>No mide la diferencia en milisegundos</strong> ni la intensidad del golpe.</li>
-              <li><strong>La "precisión" es el acierto en la almohadilla.</strong> Todavía no entrega una métrica de precisión.</li>
-              <li><strong>La sensibilidad depende del montaje</strong> del sensor y requiere calibración en cada placa.</li>
-              <li><strong>Una sola actividad de prueba</strong>, sin tasa de acierto medida.</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Hacia dónde sigue</h3>
-            <ul>
-              <li><strong>Medir la tasa de detección</strong> y las falsas detecciones con un protocolo repetible.</li>
-              <li><strong>Mejorar el montaje del sensor</strong>, con una placa rígida y mejor fijación.</li>
-              <li><strong>Calibración automática</strong> al encender cada almohadilla.</li>
-              <li><strong>Sensibilidad ajustable por categoría</strong>: niños, adultos, cinturón negro.</li>
-              <li><strong>Aviso del estado</strong> de cada almohadilla (conexión y batería).</li>
-              <li><strong>Tiempos con un reloj compartido</strong>, para medir la diferencia en milisegundos, el tiempo de reacción y combinaciones como tsuki seguido de mawashi.</li>
-              <li><strong>Validación en un torneo completo.</strong></li>
-            </ul>
+          <div class="logo-wrap">
+            <img
+              src="assets/img/logo-kendokan.png"
+              width="260"
+              height="260"
+              alt="Logo del dojo KenDoKan Karate Do"
+            />
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ===================== EQUIPO ===================== -->
-    <section class="seccion seccion--oscura" id="equipo">
+      <!-- ===================== VIDEO ===================== -->
+      <section class="seccion seccion--blanca" id="video">
+        <div class="contenedor">
+          <h2>Míralo en un minuto y medio</h2>
+          <p class="intro">
+            Esta animación explica por qué es tan difícil saber quién golpeó
+            primero a simple vista, y cómo lo resuelve Sen Tsuki.
+          </p>
+          <div class="video">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/37KhH7IEXIQ"
+              title="Sen Tsuki: animación explicativa"
+              loading="lazy"
+              allow="
+                accelerometer;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+              "
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <p class="pie-video">
+            Animación ilustrativa con muñecos esquemáticos: los tiempos y
+            resultados que muestra son un ejemplo, no datos medidos.
+            <a
+              href="https://youtu.be/37KhH7IEXIQ"
+              target="_blank"
+              rel="noopener"
+              >Ver en YouTube</a
+            >.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================== PROBLEMA ===================== -->
+      <section class="seccion" id="problema">
+        <div class="contenedor">
+          <h2>El problema</h2>
+          <p class="intro">
+            En karate, quién conecta primero un golpe se decide en fracciones de
+            segundo y depende de lo que alcanzan a ver los jueces.
+          </p>
+          <div class="grid g3">
+            <article class="tarjeta">
+              <h3>Difícil de juzgar a simple vista</h3>
+              <p>
+                Cuando dos golpes llegan casi juntos, no se puede saber con
+                certeza cuál fue primero. Incluso al repetir la jugada, la
+                decisión depende de quién mira y desde dónde.
+              </p>
+            </article>
+            <article class="tarjeta">
+              <h3>Hay error humano</h3>
+              <p>
+                Dos jueces pueden ver cosas distintas. Sin una medición, la
+                discusión no tiene dónde apoyarse.
+              </p>
+            </article>
+            <article class="tarjeta">
+              <h3>Sin retroalimentación inmediata</h3>
+              <p>
+                Quien entrena la velocidad y la precisión del
+                <em>tsuki</em> depende de la opinión del instructor para saber
+                si fue rápido o si acertó.
+              </p>
+            </article>
+          </div>
+          <p style="margin-top: 28px">
+            En otros deportes de combate ya se usan sensores para resolver este
+            tipo de discusión. En taekwondo, por ejemplo, la subjetividad del
+            puntaje generó disputas y se incorporaron protectores electrónicos
+            con sensores inalámbricos <a href="#referencias">[1]</a>. Quisimos
+            algo pensado para el karate, accesible, portátil y construido por
+            nosotros.
+          </p>
+          <p class="destacado">
+            <strong>Objetivo:</strong> que los alumnos puedan
+            <strong>practicar velocidad y precisión</strong> con un resultado
+            inmediato y medido, y que las exhibiciones y torneos del dojo
+            cuenten con una referencia objetiva de quién golpeó primero.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================== SOLUCIÓN ===================== -->
+      <section class="seccion seccion--blanca" id="solucion">
+        <div class="contenedor">
+          <h2>La solución</h2>
+          <p class="intro">
+            <strong>Sen Tsuki</strong> reemplaza la apreciación visual por una
+            medición. Es un sistema de tres partes.
+          </p>
+          <div class="grid g3">
+            <article class="tarjeta tarjeta--oro">
+              <h3>Dos almohadillas</h3>
+              <p>
+                Una para Aka y otra para Ao. Cada una lleva un sensor
+                piezoeléctrico y un microcontrolador: detectan el impacto,
+                filtran el ruido y avisan por radio.
+              </p>
+            </article>
+            <article class="tarjeta tarjeta--oro">
+              <h3>Un receptor</h3>
+              <p>
+                Recibe los avisos, decide quién llegó primero y lo muestra en
+                una pantalla. Se arma con un sensor táctil que toca el juez.
+              </p>
+            </article>
+            <article class="tarjeta tarjeta--oro">
+              <h3>Un marcador web</h3>
+              <p>
+                Una página lee el resultado del receptor y muestra Aka contra
+                Ao, con puntaje, en pantalla grande para jueces y público.
+              </p>
+            </article>
+          </div>
+
+          <div class="grid g2" style="margin-top: 32px; align-items: start">
+            <div>
+              <h3>Qué lo diferencia de lo que existe</h3>
+              <ul>
+                <li>
+                  Está pensado para <strong>karate</strong> y para entrenar
+                  <strong>velocidad y precisión</strong>.
+                </li>
+                <li>
+                  Es <strong>propio</strong>: lo diseñamos y lo construimos
+                  nosotros.
+                </li>
+                <li>
+                  Es <strong>portátil</strong>: usa radio ESP-NOW, así que no
+                  necesita router, internet ni un lugar con WiFi.
+                </li>
+                <li>
+                  Usa <strong>componentes comunes</strong> de electrónica,
+                  fáciles de conseguir.
+                </li>
+                <li>
+                  Un golpe
+                  <strong>solo cuenta si impacta la almohadilla</strong>: un
+                  golpe que pasa de largo no genera señal.
+                </li>
+              </ul>
+            </div>
+            <figure class="foto-estrecha" style="justify-self: center">
+              <button
+                class="zoom"
+                type="button"
+                data-leyenda="Las dos almohadillas, roja y azul, y encima el receptor. Los parches plateados marcan la zona del sensor."
+              >
+                <img
+                  src="assets/img/foto_almohadillas.jpg"
+                  width="1400"
+                  height="1756"
+                  loading="lazy"
+                  alt="Dos almohadillas, una azul y una roja, sobre una colchoneta, con el receptor encima"
+                />
+              </button>
+              <figcaption class="leyenda">
+                Las dos almohadillas (azul y roja) y, encima, el receptor. Los
+                parches plateados marcan la zona del sensor.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== CÓMO FUNCIONA ===================== -->
+      <section class="seccion" id="como-funciona">
+        <div class="contenedor">
+          <h2>Cómo funciona</h2>
+          <p class="intro">
+            Del golpe al resultado hay cuatro componentes que se hablan por
+            radio y por cable. Estos diagramas muestran cómo se conectan y qué
+            ocurre en una ronda.
+          </p>
+
+          <h3>Arquitectura</h3>
+          <div class="diagrama">
+            <svg viewBox="0 0 1000 450" role="img" aria-labelledby="t1 d1">
+              <title id="t1">Arquitectura del sistema</title>
+              <desc id="d1">
+                Dos almohadillas, A y B, envían mensajes por radio ESP-NOW a un
+                receptor con pantalla OLED y sensor táctil. El receptor envía el
+                resultado por USB serie a un marcador web.
+              </desc>
+              <defs>
+                <marker
+                  id="f1"
+                  viewBox="0 0 10 10"
+                  refX="8"
+                  refY="5"
+                  markerUnits="userSpaceOnUse"
+                  markerWidth="18"
+                  markerHeight="18"
+                  orient="auto"
+                >
+                  <path d="M0 0 L10 5 L0 10 z" class="d-flecha" />
+                </marker>
+              </defs>
+              <rect
+                class="d-a"
+                x="20"
+                y="50"
+                width="240"
+                height="130"
+                rx="18"
+              />
+              <text class="d-tg" x="140" y="102" text-anchor="middle">
+                Almohadilla A
+              </text>
+              <text class="d-ts" x="140" y="136" text-anchor="middle">
+                Aka · piezo + ESP32-C3
+              </text>
+              <rect
+                class="d-b"
+                x="20"
+                y="270"
+                width="240"
+                height="130"
+                rx="18"
+              />
+              <text class="d-tg" x="140" y="322" text-anchor="middle">
+                Almohadilla B
+              </text>
+              <text class="d-ts" x="140" y="356" text-anchor="middle">
+                Ao · piezo + ESP32-C3
+              </text>
+
+              <path
+                class="d-linea"
+                d="M262 115 H340 V203 H446"
+                marker-end="url(#f1)"
+              />
+              <path
+                class="d-linea"
+                d="M262 335 H340 V267 H446"
+                marker-end="url(#f1)"
+              />
+              <text class="d-ta" x="301" y="100" text-anchor="middle">
+                ESP-NOW
+              </text>
+              <text class="d-ta" x="301" y="368" text-anchor="middle">
+                ESP-NOW
+              </text>
+
+              <rect
+                class="d-rx"
+                x="450"
+                y="140"
+                width="240"
+                height="190"
+                rx="18"
+              />
+              <text class="d-tg" x="570" y="200" text-anchor="middle">
+                Receptor
+              </text>
+              <text class="d-t" x="570" y="236" text-anchor="middle">
+                ESP32 DevKit
+              </text>
+              <text class="d-ts" x="570" y="266" text-anchor="middle">
+                pantalla OLED
+              </text>
+              <text class="d-ts" x="570" y="290" text-anchor="middle">
+                sensor táctil
+              </text>
+
+              <path class="d-linea" d="M692 235 H796" marker-end="url(#f1)" />
+              <text
+                class="d-ta"
+                x="744"
+                y="216"
+                text-anchor="middle"
+                style="font-size: 16px"
+              >
+                USB serie
+              </text>
+
+              <rect
+                class="d-caja"
+                x="800"
+                y="160"
+                width="180"
+                height="150"
+                rx="18"
+              />
+              <text
+                class="d-t"
+                x="890"
+                y="222"
+                text-anchor="middle"
+                style="font-size: 20px"
+              >
+                Marcador web
+              </text>
+              <text class="d-ts" x="890" y="254" text-anchor="middle">
+                Aka vs Ao
+              </text>
+              <text class="d-ts" x="890" y="278" text-anchor="middle">
+                pantalla grande
+              </text>
+            </svg>
+          </div>
+          <p class="leyenda">
+            La radio ESP-NOW conecta las almohadillas con el receptor sin router
+            ni internet. El receptor se conecta por cable USB a un computador,
+            que muestra el marcador.
+          </p>
+
+          <h3 style="margin-top: 44px">Del golpe al resultado</h3>
+          <ol class="pasos">
+            <li>
+              <h4>Golpe</h4>
+              <p>
+                El impacto deforma el disco piezoeléctrico pegado a la
+                almohadilla.
+              </p>
+            </li>
+            <li>
+              <h4>Señal</h4>
+              <p>
+                El piezo genera un pulso de voltaje de pocos milisegundos. Un
+                circuito lo protege y lo mantiene estable.
+              </p>
+            </li>
+            <li>
+              <h4>Detección</h4>
+              <p>
+                El microcontrolador lee la señal sin parar. Si supera un umbral
+                calibrado, hay un golpe válido.
+              </p>
+            </li>
+            <li>
+              <h4>Aviso</h4>
+              <p>
+                Envía por radio un mensaje de un solo carácter,
+                <strong>A</strong> o <strong>B</strong>, al receptor.
+              </p>
+            </li>
+            <li>
+              <h4>Decisión</h4>
+              <p>
+                El receptor registra el
+                <strong>primer mensaje que llega</strong> y bloquea los
+                siguientes.
+              </p>
+            </li>
+            <li>
+              <h4>Resultado</h4>
+              <p>
+                Lo muestra en su pantalla y lo envía al marcador web, para que
+                todo el dojo lo vea.
+              </p>
+            </li>
+          </ol>
+
+          <h3 style="margin-top: 44px">Una ronda, paso a paso</h3>
+          <div class="diagrama diagrama--ancho">
+            <svg viewBox="0 0 1000 640" role="img" aria-labelledby="t2 d2">
+              <title id="t2">Secuencia de una ronda</title>
+              <desc id="d2">
+                El juez toca el sensor del receptor y el marcador muestra LISTO.
+                Las almohadillas A y B envían sus golpes; el receptor declara
+                ganador al primero que llega, lo muestra y lo envía al marcador.
+                El juez toca el sensor para una nueva ronda.
+              </desc>
+              <defs>
+                <marker
+                  id="f2"
+                  viewBox="0 0 10 10"
+                  refX="8"
+                  refY="5"
+                  markerUnits="userSpaceOnUse"
+                  markerWidth="16"
+                  markerHeight="16"
+                  orient="auto"
+                >
+                  <path d="M0 0 L10 5 L0 10 z" class="d-flecha" />
+                </marker>
+              </defs>
+              <!-- cabezas -->
+              <rect
+                class="d-caja"
+                x="20"
+                y="14"
+                width="160"
+                height="48"
+                rx="12"
+              />
+              <text class="d-t" x="100" y="45" text-anchor="middle">Juez</text>
+              <rect
+                class="d-a"
+                x="220"
+                y="14"
+                width="160"
+                height="48"
+                rx="12"
+              />
+              <text
+                class="d-t"
+                x="300"
+                y="45"
+                text-anchor="middle"
+                style="font-size: 17px"
+              >
+                Almohadilla A
+              </text>
+              <rect
+                class="d-b"
+                x="420"
+                y="14"
+                width="160"
+                height="48"
+                rx="12"
+              />
+              <text
+                class="d-t"
+                x="500"
+                y="45"
+                text-anchor="middle"
+                style="font-size: 17px"
+              >
+                Almohadilla B
+              </text>
+              <rect
+                class="d-rx"
+                x="620"
+                y="14"
+                width="160"
+                height="48"
+                rx="12"
+              />
+              <text class="d-t" x="700" y="45" text-anchor="middle">
+                Receptor
+              </text>
+              <rect
+                class="d-caja"
+                x="820"
+                y="14"
+                width="160"
+                height="48"
+                rx="12"
+              />
+              <text
+                class="d-t"
+                x="900"
+                y="45"
+                text-anchor="middle"
+                style="font-size: 17px"
+              >
+                Marcador web
+              </text>
+              <!-- líneas de vida -->
+              <line class="d-vida" x1="100" y1="62" x2="100" y2="612" />
+              <line class="d-vida" x1="300" y1="62" x2="300" y2="612" />
+              <line class="d-vida" x1="500" y1="62" x2="500" y2="612" />
+              <line class="d-vida" x1="700" y1="62" x2="700" y2="612" />
+              <line class="d-vida" x1="900" y1="62" x2="900" y2="612" />
+              <!-- mensajes -->
+              <path
+                class="d-linea"
+                style="stroke-width: 3"
+                d="M100 112 H696"
+                marker-end="url(#f2)"
+              />
+              <text class="d-ta" x="398" y="102" text-anchor="middle">
+                Toca el sensor (arma la ronda)
+              </text>
+              <path
+                class="d-linea"
+                style="stroke-width: 3"
+                d="M700 162 H896"
+                marker-end="url(#f2)"
+              />
+              <text class="d-ta" x="798" y="152" text-anchor="middle">
+                LISTO
+              </text>
+              <rect
+                class="d-nota"
+                x="520"
+                y="186"
+                width="360"
+                height="40"
+                rx="8"
+              />
+              <text
+                class="d-t"
+                x="700"
+                y="212"
+                text-anchor="middle"
+                style="font-size: 16px"
+              >
+                Gracia de 500 ms: ignora golpes
+              </text>
+
+              <path
+                class="d-linea"
+                style="stroke-width: 3"
+                d="M300 292 H696"
+                marker-end="url(#f2)"
+              />
+              <text class="d-ta" x="498" y="282" text-anchor="middle">
+                Golpe A (llega primero)
+              </text>
+              <path
+                class="d-linea"
+                style="stroke-width: 3"
+                d="M500 347 H696"
+                marker-end="url(#f2)"
+              />
+              <text class="d-ta" x="598" y="337" text-anchor="middle">
+                Golpe B (llega después)
+              </text>
+              <rect
+                class="d-nota"
+                x="520"
+                y="372"
+                width="360"
+                height="58"
+                rx="8"
+              />
+              <text
+                class="d-t"
+                x="700"
+                y="397"
+                text-anchor="middle"
+                style="font-size: 16px"
+              >
+                Gana el primero en llegar (A).
+              </text>
+              <text
+                class="d-t"
+                x="700"
+                y="418"
+                text-anchor="middle"
+                style="font-size: 16px"
+              >
+                Ignora cualquier otro mensaje.
+              </text>
+
+              <path
+                class="d-linea"
+                style="stroke-width: 3"
+                d="M700 472 H896"
+                marker-end="url(#f2)"
+              />
+              <text class="d-ta" x="798" y="462" text-anchor="middle">
+                Ganador: A
+              </text>
+              <rect
+                class="d-nota"
+                x="580"
+                y="496"
+                width="240"
+                height="40"
+                rx="8"
+              />
+              <text
+                class="d-t"
+                x="700"
+                y="522"
+                text-anchor="middle"
+                style="font-size: 16px"
+              >
+                Pantalla: AKA GANA
+              </text>
+
+              <path
+                class="d-linea"
+                style="stroke-width: 3"
+                d="M100 587 H696"
+                marker-end="url(#f2)"
+              />
+              <text class="d-ta" x="398" y="577" text-anchor="middle">
+                Toca el sensor (nueva ronda)
+              </text>
+            </svg>
+          </div>
+          <p class="pista">
+            Desliza el diagrama hacia los lados para verlo completo.
+          </p>
+          <p class="leyenda">
+            <strong
+              >Por qué gana el primero en llegar y no el de menor
+              tiempo:</strong
+            >
+            cada placa cuenta el tiempo desde su propio encendido, así que sus
+            relojes no son comparables. En una prueba, la diferencia entre dos
+            placas llegó a 5681 ms. Por eso el sistema no compara horas: decide
+            por orden de llegada al receptor.
+          </p>
+
+          <h3 style="margin-top: 44px">Estados del receptor</h3>
+          <div class="diagrama">
+            <svg viewBox="0 60 1000 270" role="img" aria-labelledby="t3 d3">
+              <title id="t3">Estados del receptor</title>
+              <desc id="d3">
+                El receptor pasa de Arranque a Espera, y de Espera a Listo
+                cuando se toca el sensor. En Listo, el primer mensaje A o B lo
+                lleva a Ganador. Desde Ganador, un nuevo toque lo devuelve a
+                Listo.
+              </desc>
+              <defs>
+                <marker
+                  id="f3"
+                  viewBox="0 0 10 10"
+                  refX="8"
+                  refY="5"
+                  markerUnits="userSpaceOnUse"
+                  markerWidth="18"
+                  markerHeight="18"
+                  orient="auto"
+                >
+                  <path d="M0 0 L10 5 L0 10 z" class="d-flecha" />
+                </marker>
+              </defs>
+              <rect
+                class="d-caja"
+                x="30"
+                y="90"
+                width="170"
+                height="110"
+                rx="16"
+              />
+              <text class="d-tg" x="115" y="132" text-anchor="middle">
+                Arranque
+              </text>
+              <text class="d-ts" x="115" y="162" text-anchor="middle">
+                KenDoKan
+              </text>
+              <text class="d-ts" x="115" y="184" text-anchor="middle">
+                parpadea
+              </text>
+
+              <rect
+                class="d-caja"
+                x="285"
+                y="90"
+                width="170"
+                height="110"
+                rx="16"
+              />
+              <text class="d-tg" x="370" y="132" text-anchor="middle">
+                Espera
+              </text>
+              <text class="d-ts" x="370" y="162" text-anchor="middle">
+                "Toca el
+              </text>
+              <text class="d-ts" x="370" y="184" text-anchor="middle">
+                sensor"
+              </text>
+
+              <rect
+                class="d-nota"
+                x="540"
+                y="90"
+                width="170"
+                height="110"
+                rx="16"
+                style="stroke-width: 4"
+              />
+              <text class="d-tg" x="625" y="132" text-anchor="middle">
+                Listo
+              </text>
+              <text class="d-ts" x="625" y="162" text-anchor="middle">
+                pantalla LISTO
+              </text>
+              <text class="d-ts" x="625" y="184" text-anchor="middle">
+                acepta golpes
+              </text>
+
+              <rect
+                class="d-rx"
+                x="795"
+                y="90"
+                width="170"
+                height="110"
+                rx="16"
+              />
+              <text class="d-tg" x="880" y="132" text-anchor="middle">
+                Ganador
+              </text>
+              <text class="d-ts" x="880" y="162" text-anchor="middle">
+                AKA GANA
+              </text>
+              <text class="d-ts" x="880" y="184" text-anchor="middle">
+                o AO GANA
+              </text>
+
+              <path class="d-linea" d="M202 145 H283" marker-end="url(#f3)" />
+              <text
+                class="d-ts"
+                x="242"
+                y="104"
+                text-anchor="middle"
+                style="font-size: 14px"
+              >
+                animación
+              </text>
+              <text
+                class="d-ts"
+                x="242"
+                y="120"
+                text-anchor="middle"
+                style="font-size: 14px"
+              >
+                KenDoKan
+              </text>
+              <path class="d-linea" d="M457 145 H538" marker-end="url(#f3)" />
+              <text
+                class="d-ts"
+                x="497"
+                y="104"
+                text-anchor="middle"
+                style="font-size: 14px"
+              >
+                toque en
+              </text>
+              <text
+                class="d-ts"
+                x="497"
+                y="120"
+                text-anchor="middle"
+                style="font-size: 14px"
+              >
+                el sensor
+              </text>
+              <path class="d-linea" d="M712 145 H793" marker-end="url(#f3)" />
+              <text
+                class="d-ts"
+                x="752"
+                y="88"
+                text-anchor="middle"
+                style="font-size: 14px"
+              >
+                primer
+              </text>
+              <text
+                class="d-ts"
+                x="752"
+                y="104"
+                text-anchor="middle"
+                style="font-size: 14px"
+              >
+                mensaje
+              </text>
+              <text
+                class="d-ts"
+                x="752"
+                y="120"
+                text-anchor="middle"
+                style="font-size: 14px"
+              >
+                A o B
+              </text>
+              <path
+                class="d-linea"
+                d="M880 202 V262 H625 V204"
+                marker-end="url(#f3)"
+              />
+              <text class="d-ta" x="752" y="294" text-anchor="middle">
+                toque en el sensor (nueva ronda)
+              </text>
+            </svg>
+          </div>
+          <p class="leyenda">
+            Después de mostrar al ganador, el sensor se ignora un segundo, para
+            que un toque accidental no borre el resultado.
+          </p>
+
+          <h3 style="margin-top: 44px">El circuito del sensor</h3>
+          <div class="diagrama">
+            <svg viewBox="0 0 840 390" role="img" aria-labelledby="t4 d4">
+              <title id="t4">Circuito del sensor piezoeléctrico</title>
+              <desc id="d4">
+                El piezo se conecta entre el pin de entrada y tierra. En
+                paralelo con el piezo hay una resistencia a tierra y un diodo
+                Zener de 3,6 voltios con la banda hacia el pin de entrada.
+              </desc>
+              <defs>
+                <marker
+                  id="f4"
+                  viewBox="0 0 10 10"
+                  refX="8"
+                  refY="5"
+                  markerUnits="userSpaceOnUse"
+                  markerWidth="18"
+                  markerHeight="18"
+                  orient="auto"
+                >
+                  <path d="M0 0 L10 5 L0 10 z" class="d-flecha" />
+                </marker>
+              </defs>
+              <text class="d-t" x="20" y="44">
+                Piezo (no necesita alimentación)
+              </text>
+              <!-- piezo -->
+              <circle
+                cx="110"
+                cy="190"
+                r="44"
+                fill="#f6e7a0"
+                stroke="#141010"
+                stroke-width="3"
+              />
+              <path
+                d="M86 190 q12 -24 24 0 t24 0"
+                fill="none"
+                stroke="#141010"
+                stroke-width="3"
+              />
+              <path
+                d="M110 146 V90 H480"
+                fill="none"
+                stroke="#c8003a"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M110 234 V300 H480"
+                fill="none"
+                stroke="#141010"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <text class="d-ts" x="122" y="128">+ rojo</text>
+              <text class="d-ts" x="122" y="272">− negro</text>
+              <!-- nodo 1 y resistencia -->
+              <circle cx="270" cy="90" r="6" class="d-oscuro" />
+              <path
+                class="d-linea"
+                d="M270 90 V125 L254 137 L286 161 L254 185 L286 209 L254 233 L270 245 V300"
+              />
+              <circle cx="270" cy="300" r="6" class="d-oscuro" />
+              <text class="d-t" x="300" y="166">R1</text>
+              <text class="d-ts" x="300" y="190">1 MΩ en ESP32</text>
+              <text class="d-ts" x="300" y="212">100 kΩ en C3</text>
+              <!-- nodo 2 y zener -->
+              <circle cx="480" cy="90" r="6" class="d-oscuro" />
+              <path
+                class="d-linea"
+                d="M480 90 V164 M462 164 H498 M462 164 V174 M498 164 V154"
+              />
+              <path class="d-linea" d="M462 205 H498 L480 168 Z" />
+              <path class="d-linea" d="M480 205 V300" />
+              <circle cx="480" cy="300" r="6" class="d-oscuro" />
+              <text class="d-t" x="515" y="166">Zener 3,6 V</text>
+              <text class="d-ts" x="515" y="190">banda hacia</text>
+              <text class="d-ts" x="515" y="212">el pin de entrada</text>
+              <!-- hacia el ADC -->
+              <path class="d-linea" d="M486 90 H636" marker-end="url(#f4)" />
+              <rect
+                class="d-rx"
+                x="640"
+                y="50"
+                width="180"
+                height="80"
+                rx="14"
+              />
+              <text
+                class="d-t"
+                x="730"
+                y="86"
+                text-anchor="middle"
+                style="font-size: 22px"
+              >
+                Pin del ADC
+              </text>
+              <text class="d-ts" x="730" y="112" text-anchor="middle">
+                34 ESP32 · 3 C3
+              </text>
+              <!-- tierra -->
+              <path class="d-linea" d="M265 300 V320" />
+              <path
+                class="d-linea"
+                d="M243 320 H287 M251 331 H279 M259 342 H271"
+              />
+              <text class="d-ts" x="265" y="372" text-anchor="middle">
+                GND (tierra)
+              </text>
+            </svg>
+          </div>
+          <p class="leyenda">
+            La resistencia ancla el pin a tierra en reposo y el diodo Zener
+            recorta los picos de voltaje del piezo para proteger la entrada.
+            <strong>Los dos van en paralelo</strong>, cada uno directo del pin a
+            tierra. Sin la resistencia, el pin queda flotando y registra
+            "golpes" que nadie dio.
+          </p>
+
+          <div class="grid g2" style="margin-top: 36px; align-items: start">
+            <figure>
+              <button
+                class="zoom"
+                type="button"
+                data-leyenda="El receptor conectado por USB a un notebook, y el marcador web mostrando Aka y Ao."
+              >
+                <img
+                  src="assets/img/foto_marcador.jpg"
+                  width="1400"
+                  height="1035"
+                  loading="lazy"
+                  alt="Notebook con el marcador web mostrando Aka y Ao, junto al receptor azul conectado por USB"
+                />
+              </button>
+              <figcaption class="leyenda">
+                El receptor, conectado por USB a un notebook, y el marcador web
+                mostrando Aka y Ao.
+              </figcaption>
+            </figure>
+            <figure>
+              <button
+                class="zoom"
+                type="button"
+                data-leyenda="El receptor: pantalla OLED con el nombre del dojo y sensor táctil circular."
+              >
+                <img
+                  src="assets/img/foto_receptor.jpg"
+                  width="1400"
+                  height="1024"
+                  loading="lazy"
+                  alt="Receptor azul con pantalla OLED que dice KenDoKan, Toca el sensor, y un sensor táctil circular"
+                />
+              </button>
+              <figcaption class="leyenda">
+                El receptor: pantalla OLED a la derecha y sensor táctil circular
+                a la izquierda. Arriba se ve la entrada USB-C.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== IMPACTO ===================== -->
+      <section class="seccion seccion--blanca" id="impacto">
+        <div class="contenedor">
+          <h2>El impacto</h2>
+          <p class="intro">
+            Qué beneficio buscamos para cada persona que participa en una clase,
+            una exhibición o un torneo.
+          </p>
+          <div class="grid g4">
+            <article class="tarjeta">
+              <h3>Alumnos</h3>
+              <p>
+                Reciben retroalimentación inmediata: ven al instante si su golpe
+                fue el primero y si realmente impactó el blanco.
+              </p>
+            </article>
+            <article class="tarjeta">
+              <h3>Instructores y jueces</h3>
+              <p>
+                Cuentan con una referencia medida para apoyar la decisión cuando
+                los golpes llegan casi juntos.
+              </p>
+            </article>
+            <article class="tarjeta">
+              <h3>Público y dojo</h3>
+              <p>
+                El resultado aparece en pantalla grande y todos lo ven al mismo
+                tiempo, con el mismo criterio.
+              </p>
+            </article>
+            <article class="tarjeta">
+              <h3>Otros dojos</h3>
+              <p>
+                El sistema es portátil, no necesita internet y usa componentes
+                comunes, así que puede llevarse a otros lugares.
+              </p>
+            </article>
+          </div>
+          <h3 style="margin-top: 36px">Qué mejora, en concreto</h3>
+          <ul>
+            <li>
+              <strong>Menos dependencia de la mirada.</strong> La decisión de
+              quién llegó primero la toma el sensor.
+            </li>
+            <li>
+              <strong>Más claridad.</strong> Un resultado único, visible para
+              todos, en lugar de varias opiniones.
+            </li>
+            <li>
+              <strong>Entrenamiento con retroalimentación.</strong> Cada golpe
+              de práctica tiene respuesta inmediata.
+            </li>
+            <li>
+              <strong>Menos infraestructura.</strong> No hace falta router,
+              conexión a internet ni instalación fija.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===================== HISTORIA ===================== -->
+      <section class="seccion" id="historia">
+        <div class="contenedor">
+          <h2>Cómo se desarrolló</h2>
+          <p class="intro">
+            Sen Tsuki no nació como una caja ni como un marcador. Empezó con una
+            pregunta del dojo:
+            <strong
+              >¿se puede saber, con un aparato, quién golpeó primero?</strong
+            >
+            Estas son las etapas, con fotos del proceso real.
+          </p>
+
+          <ol class="linea-tiempo">
+            <li class="etapa">
+              <div class="num" aria-hidden="true">1</div>
+              <div class="etapa-cuerpo una">
+                <div>
+                  <h3>La idea inicial</h3>
+                  <p>
+                    La primera idea fue meter un sensor de vibración
+                    <strong>KY-031</strong> dentro de una almohadilla y avisar
+                    por <strong>Bluetooth</strong>. La descartamos antes de
+                    construirla: el KY-031 solo entrega encendido o apagado,
+                    rebota y no distingue la fuerza del golpe, y la latencia de
+                    Bluetooth es poco predecible.
+                  </p>
+                  <p>
+                    El cambio fue a un <strong>disco piezoeléctrico</strong>,
+                    que genera una señal proporcional al impacto, y a una
+                    comunicación por <strong>WiFi y UDP</strong>.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <li class="etapa">
+              <div class="num" aria-hidden="true">2</div>
+              <div class="etapa-cuerpo">
+                <div>
+                  <h3>El primer prototipo, sobre una protoboard</h3>
+                  <p>
+                    Tres placas ESP32 sobre la mesa: dos para las almohadillas
+                    (A y B) y una para el receptor, con una pantalla OLED que
+                    todavía decía "Presiona boton". Los dos discos
+                    piezoeléctricos se ven a los lados, y en la hoja quedaron
+                    anotadas las direcciones MAC de cada placa, necesarias para
+                    que se hablen entre sí.
+                  </p>
+                </div>
+                <figure>
+                  <button
+                    class="zoom"
+                    type="button"
+                    data-leyenda="Primer prototipo: ESP32 con pantalla OLED, dos piezos y la hoja con las direcciones MAC."
+                  >
+                    <img
+                      src="assets/img/historia/01_prototipo_protoboard.jpg"
+                      width="1400"
+                      height="775"
+                      loading="lazy"
+                      alt="Placa ESP32 sobre una protoboard con una pantalla OLED, dos discos piezoeléctricos y una hoja con direcciones anotadas a mano"
+                    />
+                  </button>
+                  <figcaption class="leyenda">
+                    Primer prototipo, sobre protoboard.
+                  </figcaption>
+                </figure>
+              </div>
+            </li>
+
+            <li class="etapa">
+              <div class="num" aria-hidden="true">3</div>
+              <div class="etapa-cuerpo">
+                <div>
+                  <h3>Las primeras paletas</h3>
+                  <p>
+                    Para probar la idea en un golpe real usamos
+                    <strong>paletas de foco</strong>: dentro de la palma pusimos
+                    una ESP32 con una protoboard pequeña, la resistencia y el
+                    diodo Zener. El disco piezoeléctrico (el círculo dorado)
+                    quedó en el centro de la cara de golpeo, sujeto con cinta
+                    negra.
+                  </p>
+                </div>
+                <div class="fotos fotos--2">
+                  <figure>
+                    <button
+                      class="zoom"
+                      type="button"
+                      data-leyenda="Primera versión: la electrónica en la palma de la paleta y el sensor al centro de la cara de golpeo."
+                    >
+                      <img
+                        src="assets/img/historia/02_primera_paleta_guante.jpg"
+                        width="913"
+                        height="1437"
+                        loading="lazy"
+                        alt="Paleta de foco roja con una ESP32 en la palma y, abajo, la cara de golpeo con el piezo bajo cinta negra"
+                      />
+                    </button>
+                    <figcaption class="leyenda">
+                      Electrónica en la palma y sensor al centro.
+                    </figcaption>
+                  </figure>
+                  <figure>
+                    <button
+                      class="zoom"
+                      type="button"
+                      data-leyenda="Detalle: ESP32, protoboard pequeña, resistencia y Zener dentro de la paleta."
+                    >
+                      <img
+                        src="assets/img/historia/03_primera_paleta_detalle.jpg"
+                        width="1400"
+                        height="1578"
+                        loading="lazy"
+                        alt="Detalle de una ESP32 con protoboard pequeña, resistencia y diodo, dentro de una paleta roja"
+                      />
+                    </button>
+                    <figcaption class="leyenda">
+                      Detalle: ESP32, resistencia y Zener.
+                    </figcaption>
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="etapa">
+              <div class="num" aria-hidden="true">4</div>
+              <div class="etapa-cuerpo">
+                <div>
+                  <h3>Más chico: de la ESP32 a la ESP32-C3</h3>
+                  <p>
+                    La ESP32 DevKit funcionaba, pero era grande para ir en una
+                    almohadilla. La <strong>ESP32-C3 Super Mini</strong> es
+                    mucho más pequeña y de menor consumo, así que pasó a las
+                    almohadillas.
+                  </p>
+                  <p>
+                    El cambio exigió recalibrar: su ADC se comporta distinto y
+                    la resistencia de 1 MΩ dejaba el pin flotando, por lo que se
+                    usó una de <strong>100 kΩ</strong>.
+                  </p>
+                </div>
+                <figure class="foto-estrecha">
+                  <button
+                    class="zoom"
+                    type="button"
+                    data-leyenda="Arriba, la ESP32 DevKit. Abajo, la ESP32-C3 Super Mini."
+                  >
+                    <img
+                      src="assets/img/historia/04_esp32_vs_c3.jpg"
+                      width="1136"
+                      height="1584"
+                      loading="lazy"
+                      alt="Una mano sostiene una placa ESP32 DevKit y, debajo, una ESP32-C3 Super Mini mucho más pequeña"
+                    />
+                  </button>
+                  <figcaption class="leyenda">
+                    Arriba, la ESP32 DevKit. Abajo, la ESP32-C3 Super Mini.
+                  </figcaption>
+                </figure>
+              </div>
+            </li>
+
+            <li class="etapa">
+              <div class="num" aria-hidden="true">5</div>
+              <div class="etapa-cuerpo una">
+                <div>
+                  <h3>Las paletas del dojo</h3>
+                  <p>
+                    Después pasamos a las
+                    <strong>paletas de entrenamiento del dojo</strong>, las
+                    mismas que se usan en clase. La C3 se sujeta con cinta en el
+                    extremo del mango, y un cable USB-C permite programarla y
+                    alimentarla. El parche plateado de la cara de golpeo marca
+                    la zona del sensor.
+                  </p>
+                </div>
+                <div class="fotos fotos--3">
+                  <figure>
+                    <button
+                      class="zoom"
+                      type="button"
+                      data-leyenda="La ESP32-C3 sujeta con cinta en el mango de la paleta azul."
+                    >
+                      <img
+                        src="assets/img/historia/05_paleta_azul_con_c3.jpg"
+                        width="533"
+                        height="524"
+                        loading="lazy"
+                        alt="Placa ESP32-C3 sujeta con cinta negra al mango de una paleta azul"
+                      />
+                    </button>
+                    <figcaption class="leyenda">La C3 en el mango.</figcaption>
+                  </figure>
+                  <figure>
+                    <button
+                      class="zoom"
+                      type="button"
+                      data-leyenda="El cable USB-C conectado al mango de la paleta azul."
+                    >
+                      <img
+                        src="assets/img/historia/06_paleta_azul_usb.jpg"
+                        width="396"
+                        height="473"
+                        loading="lazy"
+                        alt="Cable USB-C conectado al mango de una paleta azul, junto a un teclado"
+                      />
+                    </button>
+                    <figcaption class="leyenda">
+                      El cable USB-C en el mango.
+                    </figcaption>
+                  </figure>
+                  <figure>
+                    <button
+                      class="zoom"
+                      type="button"
+                      data-leyenda="Las dos paletas, Ao (azul) y Aka (roja), con su parche plateado."
+                    >
+                      <img
+                        src="assets/img/historia/07_paletas_del_dojo.jpg"
+                        width="397"
+                        height="431"
+                        loading="lazy"
+                        alt="Dos paletas de entrenamiento, una azul y una roja, cada una con un parche plateado"
+                      />
+                    </button>
+                    <figcaption class="leyenda">
+                      Las dos paletas, Ao y Aka.
+                    </figcaption>
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="etapa">
+              <div class="num" aria-hidden="true">6</div>
+              <div class="etapa-cuerpo">
+                <div>
+                  <h3>El receptor: de la protoboard a la caja</h3>
+                  <p>
+                    El receptor pasó por varias formas. Primero llevaba LEDs
+                    rojo y azul para mostrar al ganador, pero se comportaban de
+                    forma errática; los reemplazó una
+                    <strong>pantalla OLED</strong>. El botón, que al principio
+                    era un cable puenteado, pasó a ser un
+                    <strong>sensor táctil</strong>. Y la electrónica terminó en
+                    una <strong>caja impresa en 3D</strong>.
+                  </p>
+                </div>
+                <div class="fotos fotos--2">
+                  <figure>
+                    <button
+                      class="zoom"
+                      type="button"
+                      data-leyenda="Primera caja del receptor, con la pantalla OLED y una powerbank."
+                    >
+                      <img
+                        src="assets/img/historia/08_receptor_prototipo.jpg"
+                        width="407"
+                        height="512"
+                        loading="lazy"
+                        alt="Receptor dentro de una caja negra, con una pantalla OLED que dice KenDoKan y una powerbank azul detrás"
+                      />
+                    </button>
+                    <figcaption class="leyenda">
+                      Primera caja del receptor.
+                    </figcaption>
+                  </figure>
+                  <figure>
+                    <button
+                      class="zoom"
+                      type="button"
+                      data-leyenda="Una impresora 3D imprimiendo una pieza de la caja azul."
+                    >
+                      <img
+                        src="assets/img/historia/09_impresion_caja.jpg"
+                        width="700"
+                        height="489"
+                        loading="lazy"
+                        alt="Impresora 3D imprimiendo una pieza azul de la caja del receptor"
+                      />
+                    </button>
+                    <figcaption class="leyenda">
+                      Impresión de una pieza de la caja.
+                    </figcaption>
+                  </figure>
+                </div>
+              </div>
+            </li>
+
+            <li class="etapa">
+              <div class="num" aria-hidden="true">7</div>
+              <div class="etapa-cuerpo una">
+                <div>
+                  <h3>Del cable al marcador web</h3>
+                  <p>
+                    La primera versión del marcador era una aplicación en el
+                    computador que recibía los golpes por WiFi y UDP. La versión
+                    actual lee directamente el puerto serie del receptor desde
+                    una página web, para proyectar el resultado al público. Así
+                    el marcador quedó independiente del WiFi del lugar.
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ol>
+
+          <h3 style="margin-top: 48px">Lo que aprendimos</h3>
+          <div class="grid g2">
+            <article class="tarjeta">
+              <h4>Un pin sin resistencia "oye" cosas que no pasaron</h4>
+              <p>Sin la resistencia a tierra, el sensor dispara solo.</p>
+            </article>
+            <article class="tarjeta">
+              <h4>Cada placa tiene su propio reloj</h4>
+              <p>
+                Comparar la hora de dos placas dio 5681 ms de diferencia: había
+                que decidir por orden de llegada.
+              </p>
+            </article>
+            <article class="tarjeta">
+              <h4>No se dibuja desde la tarea de radio</h4>
+              <p>
+                Dos partes del programa escribiendo en la pantalla a la vez la
+                dejaron con textos mezclados.
+              </p>
+            </article>
+            <article class="tarjeta">
+              <h4>Lo que funciona en una placa se recalibra en otra</h4>
+              <p>
+                El mismo circuito se comportó distinto en la ESP32 y en la
+                ESP32-C3.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== RESULTADOS ===================== -->
+      <section class="seccion seccion--blanca" id="resultados">
+        <div class="contenedor">
+          <h2>Resultados de las pruebas</h2>
+          <p class="intro">
+            Qué medimos durante el desarrollo y qué pasó en una actividad real
+            con alumnos del dojo.
+          </p>
+
+          <div class="cifras">
+            <div class="cifra">
+              <b>16–104</b
+              ><span>señal del sensor en reposo (escala 0 a 4095)</span>
+            </div>
+            <div class="cifra">
+              <b>650–4095</b><span>señal al golpear, en pruebas de banco</span>
+            </div>
+            <div class="cifra">
+              <b>~250</b
+              ><span>golpes en la actividad con alumnos, 5 por alumno</span>
+            </div>
+            <div class="cifra">
+              <b>~50</b
+              ><span>alumnos participaron, con tsuki y mawashi geri</span>
+            </div>
+          </div>
+
+          <h3>Pruebas de banco</h3>
+          <p>
+            Muestras reales del sensor durante el desarrollo. Con el umbral en
+            500, las lecturas de reposo quedan muy por debajo y los golpes
+            medidos quedan por encima.
+          </p>
+          <div class="chart">
+            <svg
+              viewBox="0 0 940 340"
+              role="img"
+              aria-labelledby="tg dg"
+              font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
+            >
+              <title id="tg">
+                Muestras reales del sensor: 16 en reposo y 11 golpes
+              </title>
+              <desc id="dg">
+                Gráfico de barras con 27 lecturas del sensor, de 0 a 4095. Las
+                lecturas de reposo, entre 16 y 104, quedan muy por debajo del
+                umbral de 500; los golpes medidos, entre 650 y 4095, quedan por
+                encima.
+              </desc>
+              <line
+                x1="78"
+                y1="290.0"
+                x2="922"
+                y2="290.0"
+                stroke="#e5dcb8"
+                stroke-width="1.5"
+              />
+              <text
+                x="70"
+                y="295.0"
+                text-anchor="end"
+                font-size="14"
+                fill="#3b3030"
+              >
+                0
+              </text>
+              <line
+                x1="78"
+                y1="226.5"
+                x2="922"
+                y2="226.5"
+                stroke="#e5dcb8"
+                stroke-width="1.5"
+              />
+              <text
+                x="70"
+                y="231.5"
+                text-anchor="end"
+                font-size="14"
+                fill="#3b3030"
+              >
+                1000
+              </text>
+              <line
+                x1="78"
+                y1="163.0"
+                x2="922"
+                y2="163.0"
+                stroke="#e5dcb8"
+                stroke-width="1.5"
+              />
+              <text
+                x="70"
+                y="168.0"
+                text-anchor="end"
+                font-size="14"
+                fill="#3b3030"
+              >
+                2000
+              </text>
+              <line
+                x1="78"
+                y1="99.5"
+                x2="922"
+                y2="99.5"
+                stroke="#e5dcb8"
+                stroke-width="1.5"
+              />
+              <text
+                x="70"
+                y="104.5"
+                text-anchor="end"
+                font-size="14"
+                fill="#3b3030"
+              >
+                3000
+              </text>
+              <line
+                x1="78"
+                y1="36.0"
+                x2="922"
+                y2="36.0"
+                stroke="#e5dcb8"
+                stroke-width="1.5"
+              />
+              <text
+                x="70"
+                y="41.0"
+                text-anchor="end"
+                font-size="14"
+                fill="#3b3030"
+              >
+                4000
+              </text>
+              <rect x="82.6" y="285.9" width="22" height="4.1" fill="#8a8070" />
+              <rect
+                x="113.9"
+                y="288.0"
+                width="22"
+                height="2.0"
+                fill="#8a8070"
+              />
+              <rect
+                x="145.1"
+                y="287.5"
+                width="22"
+                height="2.5"
+                fill="#8a8070"
+              />
+              <rect
+                x="176.4"
+                y="288.0"
+                width="22"
+                height="2.0"
+                fill="#8a8070"
+              />
+              <rect
+                x="207.7"
+                y="288.8"
+                width="22"
+                height="1.2"
+                fill="#8a8070"
+              />
+              <rect
+                x="238.9"
+                y="206.6"
+                width="22"
+                height="83.4"
+                fill="#141010"
+              />
+              <text
+                x="249.9"
+                y="200.6"
+                text-anchor="middle"
+                font-size="11"
+                font-weight="700"
+                fill="#141010"
+              >
+                1313
+              </text>
+              <rect
+                x="270.2"
+                y="30.0"
+                width="22"
+                height="260.0"
+                fill="#141010"
+              />
+              <rect
+                x="301.4"
+                y="30.0"
+                width="22"
+                height="260.0"
+                fill="#141010"
+              />
+              <rect
+                x="332.7"
+                y="284.9"
+                width="22"
+                height="5.1"
+                fill="#8a8070"
+              />
+              <rect
+                x="364.0"
+                y="288.8"
+                width="22"
+                height="1.2"
+                fill="#8a8070"
+              />
+              <rect
+                x="395.2"
+                y="288.5"
+                width="22"
+                height="1.5"
+                fill="#8a8070"
+              />
+              <rect
+                x="426.5"
+                y="283.4"
+                width="22"
+                height="6.6"
+                fill="#8a8070"
+              />
+              <rect
+                x="457.7"
+                y="285.9"
+                width="22"
+                height="4.1"
+                fill="#8a8070"
+              />
+              <rect
+                x="489.0"
+                y="288.0"
+                width="22"
+                height="2.0"
+                fill="#8a8070"
+              />
+              <rect
+                x="520.3"
+                y="287.0"
+                width="22"
+                height="3.0"
+                fill="#8a8070"
+              />
+              <rect
+                x="551.5"
+                y="284.3"
+                width="22"
+                height="5.7"
+                fill="#8a8070"
+              />
+              <rect
+                x="582.8"
+                y="285.9"
+                width="22"
+                height="4.1"
+                fill="#8a8070"
+              />
+              <rect
+                x="614.0"
+                y="288.0"
+                width="22"
+                height="2.0"
+                fill="#8a8070"
+              />
+              <rect
+                x="645.3"
+                y="288.8"
+                width="22"
+                height="1.2"
+                fill="#8a8070"
+              />
+              <rect
+                x="676.6"
+                y="240.4"
+                width="22"
+                height="49.6"
+                fill="#141010"
+              />
+              <text
+                x="687.6"
+                y="234.4"
+                text-anchor="middle"
+                font-size="11"
+                font-weight="700"
+                fill="#141010"
+              >
+                781
+              </text>
+              <rect
+                x="707.8"
+                y="233.1"
+                width="22"
+                height="56.9"
+                fill="#141010"
+              />
+              <text
+                x="718.8"
+                y="227.1"
+                text-anchor="middle"
+                font-size="11"
+                font-weight="700"
+                fill="#141010"
+              >
+                896
+              </text>
+              <rect
+                x="739.1"
+                y="247.7"
+                width="22"
+                height="42.3"
+                fill="#141010"
+              />
+              <text
+                x="750.1"
+                y="241.7"
+                text-anchor="middle"
+                font-size="11"
+                font-weight="700"
+                fill="#141010"
+              >
+                666
+              </text>
+              <rect
+                x="770.3"
+                y="244.8"
+                width="22"
+                height="45.2"
+                fill="#141010"
+              />
+              <text
+                x="781.3"
+                y="238.8"
+                text-anchor="middle"
+                font-size="11"
+                font-weight="700"
+                fill="#141010"
+              >
+                712
+              </text>
+              <rect
+                x="801.6"
+                y="196.9"
+                width="22"
+                height="93.1"
+                fill="#141010"
+              />
+              <text
+                x="812.6"
+                y="190.9"
+                text-anchor="middle"
+                font-size="11"
+                font-weight="700"
+                fill="#141010"
+              >
+                1466
+              </text>
+              <rect
+                x="832.9"
+                y="231.2"
+                width="22"
+                height="58.8"
+                fill="#141010"
+              />
+              <text
+                x="843.9"
+                y="225.2"
+                text-anchor="middle"
+                font-size="11"
+                font-weight="700"
+                fill="#141010"
+              >
+                926
+              </text>
+              <rect
+                x="864.1"
+                y="205.8"
+                width="22"
+                height="84.2"
+                fill="#141010"
+              />
+              <text
+                x="875.1"
+                y="199.8"
+                text-anchor="middle"
+                font-size="11"
+                font-weight="700"
+                fill="#141010"
+              >
+                1326
+              </text>
+              <rect
+                x="895.4"
+                y="248.7"
+                width="22"
+                height="41.3"
+                fill="#141010"
+              />
+              <text
+                x="906.4"
+                y="242.7"
+                text-anchor="middle"
+                font-size="11"
+                font-weight="700"
+                fill="#141010"
+              >
+                650
+              </text>
+              <line
+                x1="78"
+                y1="290"
+                x2="922"
+                y2="290"
+                stroke="#141010"
+                stroke-width="3"
+              />
+              <line
+                x1="78"
+                y1="258.3"
+                x2="922"
+                y2="258.3"
+                stroke="#c8003a"
+                stroke-width="3"
+                stroke-dasharray="12 8"
+              />
+              <text
+                x="84"
+                y="250.3"
+                font-size="16"
+                font-weight="700"
+                fill="#c8003a"
+                stroke="#fff"
+                stroke-width="5"
+                paint-order="stroke"
+              >
+                umbral = 500
+              </text>
+              <text
+                x="332.1"
+                y="44"
+                font-size="15"
+                font-weight="700"
+                fill="#141010"
+              >
+                4095 = máximo del sensor (2 golpes)
+              </text>
+              <text
+                x="500.0"
+                y="328"
+                text-anchor="middle"
+                font-size="15"
+                fill="#3b3030"
+              >
+                Muestras, en orden de registro
+              </text>
+              <text
+                transform="translate(14 160) rotate(-90)"
+                text-anchor="middle"
+                font-size="15"
+                fill="#3b3030"
+              >
+                Lectura del sensor (0–4095)
+              </text>
+            </svg>
+          </div>
+          <p class="leyenda">
+            Barras claras: reposo. Barras oscuras: golpe. Medido por el equipo
+            en pruebas de banco; no incluye la actividad con alumnos.
+          </p>
+
+          <h3 style="margin-top: 36px">Bitácora de pruebas</h3>
+          <div class="tabla-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Prueba</th>
+                  <th>Resultado medido</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Pin sin resistencia a tierra</td>
+                  <td>Lecturas de ~1000 a 4000 sin golpear (pin flotando).</td>
+                </tr>
+                <tr>
+                  <td>ESP32 con resistencia</td>
+                  <td>Reposo 16–104; golpes 1313–4095.</td>
+                </tr>
+                <tr>
+                  <td>Umbral 500, almohadilla A (ESP32)</td>
+                  <td>
+                    8 golpes consecutivos detectados: 650, 666, 712, 781, 896,
+                    926, 1326 y 1466.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Hora de cada golpe por placa</td>
+                  <td>
+                    Diferencia de 5681 ms entre placas: se descartó esta
+                    estrategia.
+                  </td>
+                </tr>
+                <tr>
+                  <td>ESP32-C3 con resistencia de 1 MΩ</td>
+                  <td>Pin flotando: 5 a 855 sin golpear.</td>
+                </tr>
+                <tr>
+                  <td>ESP32-C3 con resistencia de 100 kΩ</td>
+                  <td>
+                    Reposo 0–57; con el piezo conectado, ruido de 254 a 327
+                    (máximo por ventana de 100 ms).
+                  </td>
+                </tr>
+                <tr>
+                  <td>Actividad con alumnos</td>
+                  <td>
+                    ~50 alumnos, ~250 golpes (5 por alumno), tsuki y mawashi
+                    geri.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 style="margin-top: 48px">La prueba en el dojo</h3>
+          <p>
+            Almohadillas, receptor y marcador web en funcionamiento con unos 50
+            alumnos, cerca de 250 golpes en total. En el video se ve la
+            actividad con un efecto de ilustración aplicado para proteger la
+            identidad de los participantes.
+          </p>
+          <div class="video">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/Sx4s4t88YQE"
+              title="Sen Tsuki: prueba real en el dojo, versión ilustrada"
+              loading="lazy"
+              allow="
+                accelerometer;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+              "
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <p class="pie-video">
+            Imágenes reales de la actividad, con efecto de ilustración.
+            <a
+              href="https://youtu.be/Sx4s4t88YQE"
+              target="_blank"
+              rel="noopener"
+              >Ver en YouTube</a
+            >.
+          </p>
+
+          <!-- Para activar el enlace: pega la URL de Instagram en data-url -->
+          <aside class="insta" id="instagram" data-url="" hidden>
+            <p>
+              <strong>Más fotos de la actividad.</strong> El colegio publicó
+              fotos del día en su cuenta de Instagram.
+            </p>
+            <a class="boton" href="#" target="_blank" rel="noopener"
+              >Ver en Instagram</a
+            >
+          </aside>
+
+          <p class="nota" style="margin-top: 28px">
+            <strong>Lo que todavía no medimos:</strong> la tasa de acierto de
+            detección de las almohadillas (cuántos golpes reales detectó y
+            cuántos no) y las falsas detecciones en reposo. Las cifras de la
+            actividad son aproximadas y esa medición está pendiente.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================== LIMITACIONES Y FUTURO ===================== -->
+      <section class="seccion" id="limitaciones">
+        <div class="contenedor">
+          <h2>Limitaciones y próximos pasos</h2>
+          <div class="grid g2" style="align-items: start">
+            <div>
+              <h3>Lo que hay que tener presente</h3>
+              <p>
+                Este es un <strong>prototipo</strong>, no un sistema oficial de
+                arbitraje.
+              </p>
+              <ul>
+                <li>
+                  <strong>Orden de llegada, no hora del golpe.</strong> Si dos
+                  golpes ocurren con diferencias de pocos milisegundos, el orden
+                  de llegada por radio puede no coincidir con el orden real.
+                </li>
+                <li>
+                  <strong>No mide la diferencia en milisegundos</strong> ni la
+                  intensidad del golpe.
+                </li>
+                <li>
+                  <strong
+                    >La "precisión" es el acierto en la almohadilla.</strong
+                  >
+                  Todavía no entrega una métrica de precisión.
+                </li>
+                <li>
+                  <strong>La sensibilidad depende del montaje</strong> del
+                  sensor y requiere calibración en cada placa.
+                </li>
+                <li>
+                  <strong>Una sola actividad de prueba</strong>, sin tasa de
+                  acierto medida.
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3>Hacia dónde sigue</h3>
+              <ul>
+                <li>
+                  <strong>Medir la tasa de detección</strong> y las falsas
+                  detecciones con un protocolo repetible.
+                </li>
+                <li>
+                  <strong>Mejorar el montaje del sensor</strong>, con una placa
+                  rígida y mejor fijación.
+                </li>
+                <li>
+                  <strong>Calibración automática</strong> al encender cada
+                  almohadilla.
+                </li>
+                <li>
+                  <strong>Sensibilidad ajustable por categoría</strong>: niños,
+                  adultos, cinturón negro.
+                </li>
+                <li>
+                  <strong>Aviso del estado</strong> de cada almohadilla
+                  (conexión y batería).
+                </li>
+                <li>
+                  <strong>Tiempos con un reloj compartido</strong>, para medir
+                  la diferencia en milisegundos, el tiempo de reacción y
+                  combinaciones como tsuki seguido de mawashi.
+                </li>
+                <li><strong>Validación en un torneo completo.</strong></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== EQUIPO ===================== -->
+      <section class="seccion seccion--oscura" id="equipo">
+        <div class="contenedor">
+          <h2>Equipo y créditos</h2>
+          <ul class="equipo">
+            <li class="tarjeta" style="color: var(--negro)">
+              <h3>Equipo Los Raules</h3>
+              <p>Raúl G. Villegas Tecas<br />Raúl A. Esparza Landero</p>
+            </li>
+            <li class="tarjeta" style="color: var(--negro)">
+              <h3>Profesor guía</h3>
+              <p>Ernesto E. Vivanco T.</p>
+            </li>
+            <li class="tarjeta" style="color: var(--negro)">
+              <h3>Contexto</h3>
+              <p>
+                Jornadas de Innovación 2026, Magíster en Ingeniería Informática,
+                Universidad Andrés Bello.
+              </p>
+            </li>
+            <li class="tarjeta" style="color: var(--negro)">
+              <h3>Dojo KenDoKan</h3>
+              <p>
+                Puso el escenario, a sus alumnos y a sus instructores para las
+                pruebas.
+              </p>
+            </li>
+          </ul>
+          <p>
+            Se usó un asistente de IA (Claude, de Anthropic) como apoyo en la
+            programación, la depuración, la documentación y la animación
+            explicativa. Las pruebas con el hardware y la validación del
+            funcionamiento las realizó el equipo.
+          </p>
+
+          <h3 id="referencias" style="margin-top: 36px">Referencias</h3>
+          <ol class="refs">
+            <li>
+              Cho, E.-H.; Eom, H.-J.; Jang, S.-Y. (2020).
+              <em
+                >Comparison of Patterns of Skill Actions between Analog and
+                Electronic Protectors in Taekwondo: A Log-Linear Analysis.</em
+              >
+              International Journal of Environmental Research and Public Health,
+              17(11), 3927.
+              <a
+                href="https://doi.org/10.3390/ijerph17113927"
+                target="_blank"
+                rel="noopener"
+                >doi.org/10.3390/ijerph17113927</a
+              >
+            </li>
+            <li>
+              Montiel Torres, M. N.; Balich, N. A.; Balich, F. A. (2026).
+              <em
+                >ESP-NOW vs. WiFi: un análisis del determinismo temporal en
+                telemetría industrial de alta frecuencia.</em
+              >
+              55 JAIIO (SADIO).
+              <a
+                href="https://55jaiio.sadio.org.ar/wp-content/uploads/2026/07/273.pdf"
+                target="_blank"
+                rel="noopener"
+                >55jaiio.sadio.org.ar</a
+              >. En este estudio con ESP32, la latencia promedio fue de unos 2,4
+              ms con ESP-NOW frente a unos 105 a 113 ms con WiFi y UDP; son
+              datos del estudio, no mediciones propias.
+            </li>
+          </ol>
+        </div>
+      </section>
+    </main>
+
+    <footer class="pie">
       <div class="contenedor">
-        <h2>Equipo y créditos</h2>
-        <ul class="equipo">
-          <li class="tarjeta" style="color:var(--negro)"><h3>Equipo Los Raules</h3><p>Raúl G. Villegas Tecas<br>Raúl A. Esparza Landero</p></li>
-          <li class="tarjeta" style="color:var(--negro)"><h3>Profesor guía</h3><p>Ernesto E. Vivanco T.</p></li>
-          <li class="tarjeta" style="color:var(--negro)"><h3>Contexto</h3><p>Jornadas de Innovación 2026, Magíster en Ingeniería Informática, Universidad Andrés Bello.</p></li>
-          <li class="tarjeta" style="color:var(--negro)"><h3>Dojo KenDoKan</h3><p>Puso el escenario, a sus alumnos y a sus instructores para las pruebas.</p></li>
-        </ul>
-        <p>Se usó un asistente de IA (Claude, de Anthropic) como apoyo en la programación, la depuración, la documentación y la animación explicativa. Las pruebas con el hardware y la validación del funcionamiento las realizó el equipo.</p>
-
-        <h3 id="referencias" style="margin-top:36px">Referencias</h3>
-        <ol class="refs">
-          <li>Cho, E.-H.; Eom, H.-J.; Jang, S.-Y. (2020). <em>Comparison of Patterns of Skill Actions between Analog and Electronic Protectors in Taekwondo: A Log-Linear Analysis.</em> International Journal of Environmental Research and Public Health, 17(11), 3927. <a href="https://doi.org/10.3390/ijerph17113927" target="_blank" rel="noopener">doi.org/10.3390/ijerph17113927</a></li>
-          <li>Montiel Torres, M. N.; Balich, N. A.; Balich, F. A. (2026). <em>ESP-NOW vs. WiFi: un análisis del determinismo temporal en telemetría industrial de alta frecuencia.</em> 55 JAIIO (SADIO). <a href="https://55jaiio.sadio.org.ar/wp-content/uploads/2026/07/273.pdf" target="_blank" rel="noopener">55jaiio.sadio.org.ar</a>. En este estudio con ESP32, la latencia promedio fue de unos 2,4 ms con ESP-NOW frente a unos 105 a 113 ms con WiFi y UDP; son datos del estudio, no mediciones propias.</li>
-        </ol>
+        <p>
+          © <span id="anio">2026</span> Los Raules · Proyecto para el dojo
+          KenDoKan.
+        </p>
+        <p>
+          Textos, diagramas y fotos propias bajo licencia
+          <a
+            href="https://creativecommons.org/licenses/by/4.0/deed.es"
+            target="_blank"
+            rel="noopener"
+            >CC BY 4.0</a
+          >. El logo de KenDoKan y las marcas de la universidad no están
+          incluidos en esa licencia.
+        </p>
+        <p>
+          Sen Tsuki es un prototipo experimental y no es un sistema oficial de
+          arbitraje.
+        </p>
       </div>
-    </section>
-  </main>
+    </footer>
 
-  <footer class="pie">
-    <div class="contenedor">
-      <p>© <span id="anio">2026</span> Los Raules · Proyecto para el dojo KenDoKan.</p>
-      <p>Textos, diagramas y fotos propias bajo licencia <a href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener">CC BY 4.0</a>. El logo de KenDoKan y las marcas de la universidad no están incluidos en esa licencia.</p>
-      <p>Sen Tsuki es un prototipo experimental y no es un sistema oficial de arbitraje.</p>
-    </div>
-  </footer>
+    <dialog id="visor" aria-label="Foto ampliada">
+      <img
+        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+        alt=""
+      />
+      <div class="visor-pie">
+        <span class="visor-texto"></span
+        ><button type="button" data-cerrar>Cerrar</button>
+      </div>
+    </dialog>
 
-  <dialog id="visor" aria-label="Foto ampliada">
-    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
-    <div class="visor-pie"><span class="visor-texto"></span><button type="button" data-cerrar>Cerrar</button></div>
-  </dialog>
-
-  <script src="assets/js/main.js"></script>
-</body>
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>
